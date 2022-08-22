@@ -8,7 +8,7 @@
     font-weight: bold;
 }
 html {
-    background-color: #181A1B;
+    background-color: #000000;
     color: white;
     font-family: Asap;
 }
@@ -41,7 +41,7 @@ html a {
     padding: 20px;
     border: 1px solid white;
     border-radius: 15px;
-    background-color: #181A1B;
+    background-color: #000000;
     user-select: none !important;
 }
 .logo {
