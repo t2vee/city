@@ -14,7 +14,7 @@ html {
 }
 html a {
     text-decoration: none;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 14px 0px 14px;
     color: white;
 }
     html a:hover {
@@ -129,7 +129,7 @@ main {
     font-size: 12px;
     padding-left: 0px;
     padding-right: 0px;
-
+    border-radius: 1000px;
     background-color: rgb(64, 192, 87);
     color: rgb(255, 255, 255);
 }
