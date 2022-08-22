@@ -119,11 +119,6 @@ main {
         cursor: pointer;
     }
 .status {
-    top: 0px;
-    right: 0px;
-    transform: translate(50%, -50%);
-    z-index: 100;
-    position: absolute;
     width: 13px;
     height: 13px;
     display: flex;
@@ -134,10 +129,9 @@ main {
     font-size: 12px;
     padding-left: 0px;
     padding-right: 0px;
-    border-radius: 1000px;
+
     background-color: rgb(64, 192, 87);
     color: rgb(255, 255, 255);
-    white-space: nowrap;
 }
 footer {
     margin-top: -8px;
