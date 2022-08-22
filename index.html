@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="i/t2v256.png">
+    <link rel="stylesheet" href="c/main.css" />
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(["setCookieDomain", "*.t2v.ch"]);
+        _paq.push(["setDomains", ["*.t2v.ch", "*.*.t2v.ch"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "https://icu.ore.ink/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '5']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript><p><img src="https://icu.ore.ink/matomo.php?idsite=5&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <title>home</title>
+</head>
+<body>
+    <div id="overlay">
+        <div class="overlaypage">
+            <div class="row">
+                <div class="social">
+                    <img src="https://static-cdn.t2v.ch/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/social/github.png" alt="github" />
+                    <h3>Github</h3>
+                    <a href="http://github.com/teatwovee"><p>teatwovee</p></a>
+                </div>
+                <div class="social">
+                    <img src="https://static-cdn.t2v.ch/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/social/discord.png" alt="discord" />
+                    <h3>Discord</h3>
+                    <a class="discord" onclick="copyToClipboard('d')"><p id="d">perfection#1111</p></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="social">
+                    <img src="https://static-cdn.t2v.ch/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/social/twitch.png" alt="cursedtwitch" />
+                    <h3>Curseforge</h3>
+                    <a href="http://www.curseforge.com/members/perfectionisperfect/projects"><p>perfectionisperfect</p></a>
+                </div>
+                <div class="social">
+                    <img src="https://static-cdn.t2v.ch/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/social/twitter.png" alt="twitter" />
+                    <h3>Twitter</h3>
+                    <a href="http://twitter.com/teatwovee"><p>teatwovee</p></a>
+                </div>
+            </div>
+            <p id="close" onclick="off()">&times;</p>
+        </div>
+    </div>
+    <div class="page">
+        <header>
+            <a href="/"><img class="logo" src="https://static-cdn.t2v.ch/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2vv3.png" alt="logo" /></a>
+        </header>
+        <main>
+            <div class="link-list">
+                <a href="/projects">projects</a>
+                <a href="/tv">tv</a>
+                <a href="/blog">posts</a>
+            </div>
+            <div class="contact">
+                <a href="/id">auth</a>
+                <a id="social" onclick="on()">social</a>
+                <a href="mailto:hi@t2v.ch">email</a>
+            </div>
+        </main>
+        <div class="einfo">
+            <a href="/legal">legal</a>
+            <a href="/status">status</a>
+            <a href="/api/docs">api</a>
+        </div>
+        <footer>
+            <p>2021 &copy; t2v</p>
+        </footer>
+    </div>
+    <script src="j/index.js"></script>
+</body>
+</html>
