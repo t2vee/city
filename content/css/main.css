@@ -1,0 +1,124 @@
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Regular.woff');
+}
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Bold.ttf');
+    font-weight: bold;
+}
+html {
+    background-color: #181A1B;
+    color: white;
+    font-family: Asap;
+}
+html a {
+    text-decoration: none;
+    padding: 0px 15px 0px 15px;
+    color: white;
+}
+    html a:hover {
+        color: grey;
+        text-decoration: none;
+    }
+.page {
+    width: 13.5em;
+    max-width: 95vw;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.overlaypage {
+    margin: 6rem auto;
+    width: 20em;
+    height: 535px;
+    max-width: 95vw;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: #181A1B;
+    user-select: none !important;
+}
+.logo {
+    margin-bottom: 10px;
+    height: 100px;
+}
+main {
+    border: 1px solid white;
+    margin-bottom: 5px;
+}
+.link-list {
+    justify-content: space-between;
+    margin: 10px 0px 20px 0px;
+}
+.contact {
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0px 30px 0px;
+}
+#social {
+    cursor: pointer;
+}
+#close {
+    cursor: pointer;
+    font-size: 30px;
+}
+.social {
+    border: 1px solid white;
+    width: 150px;
+    padding: 7px 0px 7px 0px;
+}
+    .social img {
+        width: 50px;
+    }
+    .social a {
+        text-decoration: underline;
+        color: white;
+    }
+        .social a:hover {
+            text-decoration: none;
+            color: grey;
+        }
+.discord {
+    cursor: pointer;
+}
+    .discord:hover span {
+        display: none
+    }
+    .discord:hover:before {
+        content: "Click to Copy"
+    }
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.einfo {
+    display: inline;
+}
+    .einfo a {
+        font-size: 12px;
+        margin: 0px -8px 0px -8px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+footer {
+    margin-top: -8px;
+    color: #777778;
+}

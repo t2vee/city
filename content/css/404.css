@@ -1,0 +1,41 @@
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Regular.woff');
+}
+
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Bold.ttf');
+    font-weight: bold;
+}
+
+html {
+    background-color: #181A1B;
+    width: 100vw;
+    height: 100vh;
+    overflow: none;
+    color: white;
+    font-family: Asap;
+}
+
+.page {
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 100px;
+    text-align: center;
+}
+
+.logo {
+    height: 500px;
+}
+
+.text a {
+    text-decoration: none;
+    color: white;
+}
+
+    .text a:hover {
+        color: grey;
+        text-decoration: none;
+    }
