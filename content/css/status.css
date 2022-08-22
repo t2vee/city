@@ -1,0 +1,101 @@
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Regular.woff');
+}
+
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Bold.ttf');
+    font-weight: bold;
+}
+
+html {
+    background-color: #181A1B;
+    color: white;
+    font-family: Asap;
+}
+
+.page {
+    margin: 6rem auto;
+    width: 28em;
+    max-width: 95vw;
+    text-align: center;
+    user-select: none !important;
+}
+
+.logo {
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+main {
+    text-align: left;
+}
+
+.box {
+    margin-top: 9px;
+    position: relative;
+    padding: 5px;
+}
+
+    .box h1 {
+        font-size: 25px;
+        font-weight: 500;
+        display: inline-block;
+        margin: 0;
+    }
+
+        .box h1 span {
+            font-size: 0.75em;
+            font-weight: 500;
+            opacity: 0.5;
+            vertical-align: 10%;
+        }
+
+    .box.ok {
+        border: 1px solid #02B967;
+    }
+
+    .box.dev {
+        border: 1px solid #0053FC;
+    }
+
+    .box.bad {
+        border: 1px solid #FF1A1A;
+    }
+
+    .box.ok h2 {
+        color: #60FF87;
+    }
+
+    .box.dev h2 {
+        color: #0053FC;
+    }
+
+    .box.bad h2 {
+        color: #FF1A1A;
+    }
+
+    .box h2 {
+        font-size: 28px;
+        font-weight: 900;
+        display: inline-block;
+        float: right;
+        padding: 0.035em 0.42em;
+        margin: -0.035em -0.42em;
+        margin-left: 0;
+        transition: 0.5s background;
+        min-width: 5em;
+        text-align: center;
+    }
+
+footer a {
+    text-decoration: none;
+    padding: 0px 15px 0px 15px;
+    color: white;
+}
+
+    footer a:hover {
+        color: grey;
+        text-decoration: none;
+    }
