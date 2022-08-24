@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Regular.woff');
+}
+
+@font-face {
+    font-family: Asap;
+    src: url('../f/Asap-Bold.ttf');
+    font-weight: bold;
+}
+
+html {
+    background-color: #181A1B;
+    color: white;
+    font-family: Asap;
+}
+
+    html a {
+        text-decoration: none;
+        padding: 0px 15px 0px 15px;
+        color: white;
+    }
+
+        html a:hover {
+            color: grey;
+            text-decoration: none;
+        }
+
+.page {
+    width: 20em;
+    max-width: 95vw;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+main {
+    border: 1px solid white;
+}
+
+.link-list {
+    justify-content: space-between;
+    margin: 10px 0px 20px 0px;
+}
+
+.contact {
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+}
+
+.discord:hover span {
+    display: none;
+}
+
+.discord:hover:before {
+    content: "perfection#5919";
+    color: grey;
+}
