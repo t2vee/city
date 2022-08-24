@@ -1,14 +1,15 @@
 @font-face {
     font-family: Asap;
-    src: url('../f/Asap-Regular.woff');
+    src: url('../../content/fonts/Asap-Regular.woff');
 }
 @font-face {
     font-family: Asap;
-    src: url('../f/Asap-Bold.ttf');
+    src: url('../../content/fonts/Asap-Bold.ttf');
     font-weight: bold;
+
 }
 html {
-    background-color: #181A1B;
+    background-color: #000000;
     color: white;
     font-family: Asap;
 }
