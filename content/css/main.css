@@ -119,24 +119,26 @@ main {
         cursor: pointer;
     }
 .ring-container {
-    position: relative;
+    position: absolute;
+	bottom: 72px;
+	display: inline;
 }
 
 .circle {
-    width: 15px;
-    height: 15px;
+    width: 7px;
+    height: 7px;
     background-color: #62bd19;
     border-radius: 50%;
     position: absolute;
-    top: 23px;
-    left: 23px;
+    top: 21px;
+    left: 21px;
 }
 
 .ringring {
     border: 3px solid #62bd19;
     -webkit-border-radius: 30px;
-    height: 25px;
-    width: 25px;
+    height: 12px;
+    width: 12px;
     position: absolute;
     left: 15px;
     top: 15px;
