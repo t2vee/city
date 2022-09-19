@@ -37,7 +37,7 @@ html {
     min-width: 28em;
     text-align: left;
 }
-    .post a {
+    /*.post a {
         font-size: 15px;
         padding: 3px;
         margin-left: 10px;
@@ -56,6 +56,7 @@ html {
             -moz-box-shadow: inset 0px 4px 0px 0px #0A0E12;
             box-shadow: inset 0px 0px 4px 0px #0A0E12;
         }
+*/
 .tag { border: 1px solid white; }
 footer a {
     text-decoration: none;
