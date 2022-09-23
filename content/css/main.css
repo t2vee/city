@@ -21,6 +21,17 @@ html a {
         color: grey;
         text-decoration: none;
     }
+#page_container {
+	width: 16em;
+    max-width: 100vw;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
 .page {
     width: 13.5em;
     max-width: 95vw;
@@ -133,7 +144,17 @@ main {
     top: 21px;
     left: 5.9px;
 }
-
+#pattern2 {
+	clip-path: polygon(40% 37%, 58% 36%, 100% 25%, 95% 41%, 4% 41%, 0 24%);
+}
+.pwetty_pettern {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 20em;
+	background: repeating-linear-gradient(-45deg, #808080 0, #808080 6px, #0000 6px, #0000 12px);
+}
 .ringring {
     border: 3px solid #62bd19;
     -webkit-border-radius: 30px;
