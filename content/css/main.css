@@ -145,7 +145,7 @@ main {
     left: 5.9px;
 }
 #pattern2 {
-	clip-path: polygon(40% 37%, 58% 36%, 100% 25%, 95% 41%, 4% 41%, 0 24%);
+	clip-path: polygon(40% 35%, 60% 35%, 100% 25%, 95% 40%, 5% 40%, 0 25%);
 }
 .pwetty_pettern {
 	position: absolute;
