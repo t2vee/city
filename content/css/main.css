@@ -33,6 +33,7 @@ html a {
     transform: translate(-50%, -50%);
 }
 .page {
+    width: 13.5em;
     max-width: 95vw;
     text-align: center;
     margin: 0;
