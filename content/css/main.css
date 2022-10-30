@@ -55,7 +55,6 @@ html a {
     user-select: none !important;
 }
 .logo {
-    margin-bottom: 10px;
     height: 100px;
 }
 main {
@@ -112,7 +111,7 @@ main {
 }
     .einfo a {
         font-size: 12px;
-        margin: 0px -8px 0px -8px;
+        margin: -10px -8px 0px -8px;
         text-decoration: underline;
         cursor: pointer;
     }
@@ -128,6 +127,10 @@ main {
 	background: repeating-linear-gradient(-45deg, #808080 0, #808080 6px, #0000 6px, #0000 12px);
 }
 footer {
-    margin-top: -8px;
-    color: #777778;
+    margin-top: -35px;
+    color: #fff;
+}
+.poweredby_tag {
+	width: 100px;
+	margin: -15px -8px 0px -8px;
 }
