@@ -1,0 +1,31 @@
+@font-face {
+    font-family: Asap;
+    src: url('../../res/font/Asap-Regular.woff2');
+}
+html {
+    background-color: #000000;
+    color: white;
+    font-family: Asap;
+}
+html a {
+    text-decoration: none;
+    padding: 0px 9px 0px 9px;
+    color: white;
+}
+html a:hover {
+    color: grey;
+    text-decoration: none;
+}
+footer {
+    margin-top: -35px;
+    color: #fff;
+}
+footer a {
+    text-decoration: none;
+    padding: 0px 15px 0px 15px;
+    color: white;
+}
+footer a:hover {
+    color: grey;
+    text-decoration: none;
+}

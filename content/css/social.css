@@ -1,28 +1,5 @@
-@font-face {
-    font-family: Asap;
-    src: url('../../content/fonts/Asap-Regular.woff');
-}
-@font-face {
-    font-family: Asap;
-    src: url('../../content/fonts/Asap-Bold.ttf');
-    font-weight: bold;
-}
-html {
-    background-color: #000000;
-    color: white;
-    font-family: Asap;
-}
-html a {
-    text-decoration: none;
-    padding: 0px 9px 0px 9px;
-    color: white;
-}
-    html a:hover {
-        color: grey;
-        text-decoration: none;
-    }
 #page_container {
-	width: 16em;
+    width: 16em;
     max-width: 100vw;
     text-align: center;
     margin: 0;
@@ -52,6 +29,11 @@ html a {
     border: 1px solid white;
     border-radius: 15px;
     user-select: none !important;
+}
+.social {
+    border: 1px solid #fff;
+    width: 150px;
+    padding: 7px 0;
 }
 .logo {
     margin-bottom: 10px;
