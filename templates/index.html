@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="res/imgs/t2v_square_minified_favicon.webp">
-	<link rel="stylesheet" href="res/style/base.min.css" />
-	<link rel="stylesheet" href="res/style/main.min.css" />
+    <link rel="icon" href="../res/imgs/t2v_square_minified_favicon.webp">
+	<link rel="stylesheet" href="../res/style/base.min.css" />
+	<link rel="stylesheet" href="../res/style/main.min.css" />
 <script>
   var _paq = window._paq = window._paq || [];
   _paq.push(["setCookieDomain", "*.t2v.city"]);
@@ -33,15 +33,16 @@
 				<a href="/legal">legal</a>
 				<a href="https://nodes.t2v.city">status</a>
 				<a href="/space">space</a>
+				<a href="/js/?trigger={{ "Disable" if "Enabled" in javascript_status else "Enable" }}">javascript: <span style="color: {{ "green" if "Enabled" in javascript_status else "red" }}">{{ javascript_status }}</span></a>
 			</div>
-			<main>
+			<main style="margin-top: 2px;">
 				<div class="link-list">
 					<a href="https://ttea.dev" target="_blank">git <span><img src="/res/imgs/external_link.png" style="width: 13px"/></span></a>
 					<a href="https://portal.archive.t2v.city" target="_blank">archive <span><img src="/res/imgs/external_link.png" style="width: 13px"/></span></a>
 					<a href="/about">about</a>
 				</div>
 				<div class="contact">
-					<a href="https://t2v.city/interwebs">web</a>
+					<a href="/interwebs">web</a>
 					<a id="social" href="/donate">donate</a>
 					<a href="mailto:me@t2v.ch">email</a>
 				</div>
@@ -50,16 +51,10 @@
 				<a href="/legal">legal</a>
 				<a href="/status">status</a>
 			</div>
-			<!-- <div>
-				<a href="https://hardenedbsd.org/"><img class="poweredby_tag" src="res/tags/bsd_optimised.webp" alt="hardenedbsd_logo"></a>
-				<a href="https://t2v.ch"><img class="poweredby_tag" src="res/tags/t2v_optimised.webp" alt="t2v_logo"></a>
-			</div> -->
 			<footer>
 				<p>2022 &copy; t2v</p>
 			</footer>
-			<!--<a>
-				
-			</a>-->
+			<p style="font-size: 12px; position: absolute; color: #1DB954">currently listening to: <span><marquee style="color: white;">{{ song_name }}<span style="color: dimgrey;"> In Album </span>{{ song_album }}<span style="color: dimgrey;"> By </span>{{ song_artist }}</marquee></span></p>
 		</div>
 	</div>
 </body>
