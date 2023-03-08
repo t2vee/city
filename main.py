@@ -2,7 +2,7 @@ import os
 import json
 import uvicorn
 import requests
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request, Response, Cookie
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -15,36 +15,36 @@ app.mount("/res", StaticFiles(directory="res"), name="res")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request):
+async def root(request: Request, response: Response, js_trigger: bool = False):
+    print(js_trigger)
+    js_disabled = request.cookies.get("Javascript-Disabled")
+    print(js_disabled)
+    #js_disabled = True if js_disabled is None else js_disabled
+    print(js_disabled)
+    match js_trigger:
+        case False:
+            response.set_cookie(key="Javascript-Disabled", value="False")
+        case True:
+            response.set_cookie(key="Javascript-Disabled", value="True")
     headers = {"Authorization": os.environ.get("SPOTIFY_OAUTH_KEY")}
     spot_response = requests.get(
         "https://api.spotify.com/v1/me/player/currently-playing?market=AU",
         headers=headers,
     )
-    #if spot_response.status_code == 204:
-    print(spot_response.status_code)
-    spot_data = json.loads(spot_response.content)
+    if spot_response.status_code == 204:
+        data = ['', '', '', False]
+    else:
+        spot_data = json.loads(spot_response.content)
+        data = [spot_data["item"]["name"], spot_data["item"]["album"]["name"], spot_data["item"]["artists"][0]["name"],
+                True]
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
-            "javascript_status": "Enabled",
-            "song_name": spot_data["item"]["name"],
-            "song_album": spot_data["item"]["album"]["name"],
-            "song_artist": spot_data["item"]["artists"][0]["name"],
+            "javascript_status": js_disabled,
+            "data": data
         },
     )
-
-
-@app.get("/js")
-async def js_trigger(response: Response, trigger: str = "Enable"):
-    if trigger.lower() == 'enable':
-        response.headers["X-Javascript-Disabled"] = "True"
-    elif trigger.lower() == 'disable':
-        response.headers["X-Javascript-Disabled"] = "False"
-    else:
-        response.headers["X-Javascript-Disabled"] = "Auto"
-    return RedirectResponse('/')
 
 
 @app.get("/about")

@@ -33,7 +33,7 @@
 				<a href="/legal">legal</a>
 				<a href="https://nodes.t2v.city">status</a>
 				<a href="/space">space</a>
-				<a href="/js/?trigger={{ "Disable" if "Enabled" in javascript_status else "Enable" }}">javascript: <span style="color: {{ "green" if "Enabled" in javascript_status else "red" }}">{{ javascript_status }}</span></a>
+				<a href="/?js_trigger={{ True if js_disabled else False }}">javascript: <span style="color: {{ "red" if js_disabled else "green" }}">{{ javascript_status }}</span></a>
 			</div>
 			<main style="margin-top: 2px;">
 				<div class="link-list">
@@ -54,7 +54,7 @@
 			<footer>
 				<p>2022 &copy; t2v</p>
 			</footer>
-			<p style="font-size: 12px; position: absolute; color: #1DB954">currently listening to: <span><marquee style="color: white;">{{ song_name }}<span style="color: dimgrey;"> In Album </span>{{ song_album }}<span style="color: dimgrey;"> By </span>{{ song_artist }}</marquee></span></p>
+			<p style="font-size: 12px; position: absolute; color: #1DB954">{{ "currently not listening to anything" if not data[3] else "currently listening to: " }}<span style="{{ "display: none;" if not data[3] }}"><marquee style="color: white;">{{ data[0] }}<span style="color: dimgrey;"> In Album </span>{{ data[1] }}<span style="color: dimgrey;"> By </span>{{ data[2] }}</marquee></span></p>
 		</div>
 	</div>
 </body>
