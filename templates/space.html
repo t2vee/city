@@ -5,6 +5,28 @@
     <link rel="icon" href="../res/imgs/t2v_square_minified_favicon.webp">
     <link rel="stylesheet" href="../res/style/base.min.css" />
     <link rel="stylesheet" href="../res/style/social.min.css" />
+    <style>
+body {
+  background: #060e1b;
+  overflow: hidden;
+}
+
+canvas {
+  //opacity: 0.5;
+}
+.codepen {
+    color: #777778;
+    text-decoration: underline;
+}
+.codepen:hover {
+    text-decoration: none;
+    color: white;
+}
+.smaller {
+    font-size: 15px;
+
+}
+    </style>
 <script>
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -23,35 +45,180 @@
 <title>space</title>
 </head>
 <body>
+<canvas id="canvas"></canvas>
     <div id="page_container">
         <div class="page">
             <header>
-                <a href="/"><img class="logo" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.webp" alt="logo" /></a>
-                <h1>Publicly Available Services</h1>
+                <a href="/"><img class="logo" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.png" alt="logo" /></a>
+                <h1>Explore the t2v Network</h1>
             </header>
             <div id="overlay">
-                <div class="overlaypage" style="text-align: left">
-                  <h2>t2v.city</h2>
-                  <ul>
-                    <li><h3>Core</h3></li>
-                    <ul>
-                      <li><a href="https://t2v.city">t2v.city</a></li>
-                      <li><a></a></li>
-                    </ul>
-                    <li><h3>Archival Services</h3></li>
-                    <ul>
-                      <li><a href="https://portal.archive.t2v.city">portal.archive</a></li>
-                      <li><a href="https://files.archive.t2v.city">files.archive</a></li>
-                      <li><a href="https://git.archive.t2v.city">git.archive</a></li>
-                    </ul>
-                  </ul>
+                <div class="overlaypage" style="text-align: left; width: fit-content;">
+                  <div style="display: inline-flex;">
+                      <ul>
+                        <h2>t2v.city</h2>
+                        <li><h3>Core</h3></li>
+                        <ul>
+                          <li><a class="smaller" href="https://t2v.city">t2v.city</a></li>
+                          <li><a class="smaller" href="https://targets-userservices.t2v.city">targets-userservices.t2v.city</a></li>
+                          <li><a class="smaller" href="https://nodes.t2v.city">nodes.t2v.city</a></li>
+                          <li><a class="smaller" href="https://cdn.t2v.city">cdn.t2v.city</a></li>
+                        </ul>
+                        <li><h3>Archival Services</h3></li>
+                        <ul>
+                          <li><a class="smaller" href="https://portal.archive.t2v.city">portal.archive</a></li>
+                          <li><a class="smaller" href="https://files.archive.t2v.city">files.archive</a></li>
+                          <li><a class="smaller" href="https://git.archive.t2v.city">git.archive</a></li>
+                        </ul>
+                      </ul>
+                      <ul>
+                        <li><h2>Open Services</h2></li>
+                        <ul>
+                          <li><a class="smaller" href="https://nitter.au.open.t2v.city">nitter.au.open</a></li>
+                          <li><a class="smaller" href="https://proxitok.au.open.t2v.city">proxitok.au.open</a></li>
+                          <li><a class="smaller" href="https://libreddit.au.open.t2v.city">libreddit.au.open</a></li>
+                          <li><a class="smaller" href="https://libremdb.au.open.t2v.city">libremdb.au.open</a></li>
+                          <li><a class="smaller" href="https://wikiless.au.open.t2v.city">wikiless.au.open</a></li>
+                          <li><a class="smaller" href="https://rimgo.au.open.t2v.city">rimgo.au.open</a></li>
+                          <li><a class="smaller" href="https://anonymous-overflow.au.open.t2v.city">anonymous-overflow.au.open</a></li>
+                          <li><a class="smaller" href="https://gothub.au.open.t2v.city">gothub.au.open</a></li>
+                          <li><a class="smaller" href="https://invidious.au.open.t2v.city">invidious.au.open</a></li>
+                        </ul>
+                      </ul>
+                      <ul>
+                        <h2>ttea.dev</h2>
+                        <li><h3>Core</h3></li>
+                        <ul>
+                          <li><a class="smaller" href="https://ttea.dev">ttea.dev</a></li>
+                          <li><a class="smaller" href="https://ci.ttea.dev">ci.ttea.dev</a></li>
+                          <li><a class="smaller" href="https://pages.ttea.dev">pages.ttea.dev</a></li>
+                          <li><a class="smaller" href="https://css.ttea.dev">css.ttea.dev</a></li>
+                        </ul>
+                      </ul>
+                      <ul>
+                        <h2>t2v.ch</h2>
+                        <li><h3>Nodes</h3></li>
+                        <ul>
+                          <li><a class="smaller" href="http://nitrxgeoffory.onlineservices.nodes.au-01.t2v.ch">nitrxgeoffory</a></li>
+                          <li><a class="smaller" href="http://nitrxproxy.onlineservices.nodes.au-01.t2v.ch">nitrxproxy</a></li>
+                          <li><a class="smaller" href="http://nitrxtracy.onlineservices.nodes.au-01.t2v.ch">nitrxtracy</a></li>
+                          <li><a class="smaller" href="http://ocerelay.onlineservices.nodes.au-01.t2v.ch">ocerelay</a></li>
+                          <li><a class="smaller" href="http://openservice1.onlineservices.nodes.au-01.t2v.ch">openservice1</a></li>
+                        </ul>
+                        <li><h3>Etc</h3></li>
+                        <ul>
+                          <li><a class="smaller" href="https://mail.t2v.ch">mail.t2v.ch</a></li>
+                          <li><a class="smaller" href="https://static-cdn.t2v.ch">static-cdn.t2v.ch</a></li>
+                          <li><a class="smaller" href="https://s3.t2v.ch">s3.t2v.ch</a></li>
+                        </ul>
+                      </ul>
+                  </div>
                 </div>
                 <footer>
-                    <a href="/">back to home</a>
-                    <p>2022 &copy; t2v</p>
+                    <div style="display: inline-flex;">
+                        <p style="font-size: 13px;">Background from <span><a target="_blank" href="https://codepen.io/cellen/pen/JjaKxYG" class="codepen">Codepen <span><img src="/res/imgs/external_link.png" style="width: 9px"/></span></a></span></p>
+                        <p style="font-size: 13px; cursor: pointer"><span> - </span><span><a class="codepen" id="disablebg" onclick="disableBackground()">Disable background</a></span></p>
+                    </div>
+                    <br><a href="/">back to home</a>
+                    <p>2023 &copy; t2v</p>
                 </footer>
             </div>
         </div>
     </div>
 </body>
+<script>
+    function disableBackground() {
+        const bg = document.getElementById("canvas");
+        bg.style.visibility = 'hidden';
+        const disableBg = document.getElementById("disablebg");
+        disableBg.textContent = 'Enable Background';
+        disableBg.setAttribute('onclick', 'enableBackground()');
+    }
+    function enableBackground() {
+        const bg = document.getElementById("canvas");
+        bg.style.visibility = "visible";
+        const disableBg = document.getElementById("disablebg");
+        disableBg.textContent = 'Disable Background';
+        disableBg.setAttribute('onclick', 'disableBackground()');
+    }
+"use strict";
+var canvas = document.getElementById('canvas'),
+  ctx = canvas.getContext('2d'),
+  w = canvas.width = window.innerWidth,
+  h = canvas.height = window.innerHeight,
+  hue = 217,
+  stars = [],
+  count = 0,
+  maxStars = 1400;
+var canvas2 = document.createElement('canvas'),
+    ctx2 = canvas2.getContext('2d');
+    canvas2.width = 100;
+    canvas2.height = 100;
+var half = canvas2.width/2,
+    gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+    gradient2.addColorStop(0.025, '#fff');
+    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+    gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+    gradient2.addColorStop(1, 'transparent');
+    ctx2.fillStyle = gradient2;
+    ctx2.beginPath();
+    ctx2.arc(half, half, half, 0, Math.PI * 2);
+    ctx2.fill();
+function random(min, max) {
+  if (arguments.length < 2) {
+    max = min;
+    min = 0;
+  }
+  if (min > max) {
+    var hold = max;
+    max = min;
+    min = hold;
+  }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function maxOrbit(x,y) {
+  var max = Math.max(x,y),
+      diameter = Math.round(Math.sqrt(max*max + max*max));
+  return diameter/2;
+}
+var Star = function() {
+  this.orbitRadius = random(maxOrbit(w,h));
+  this.radius = random(60, this.orbitRadius) / 12;
+  this.orbitX = w / 2;
+  this.orbitY = h / 2;
+  this.timePassed = random(0, maxStars);
+  this.speed = random(this.orbitRadius) / 1000000;
+  this.alpha = random(2, 10) / 10;
+  count++;
+  stars[count] = this;
+}
+Star.prototype.draw = function() {
+  var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+      y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+      twinkle = random(10);
+  if (twinkle === 1 && this.alpha > 0) {
+    this.alpha -= 0.05;
+  } else if (twinkle === 2 && this.alpha < 1) {
+    this.alpha += 0.05;
+  }
+  ctx.globalAlpha = this.alpha;
+    ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+  this.timePassed += this.speed;
+}
+for (var i = 0; i < maxStars; i++) {
+  new Star();
+}
+function animation() {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.8;
+    ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
+    ctx.fillRect(0, 0, w, h)
+  ctx.globalCompositeOperation = 'lighter';
+  for (var i = 1, l = stars.length; i < l; i++) {
+    stars[i].draw();
+  };
+  window.requestAnimationFrame(animation);
+}
+animation();
+</script>
 </html>
