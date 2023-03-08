@@ -15,17 +15,7 @@ app.mount("/res", StaticFiles(directory="res"), name="res")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request, response: Response, js_trigger: bool = False):
-    print(js_trigger)
-    js_disabled = request.cookies.get("Javascript-Disabled")
-    print(js_disabled)
-    #js_disabled = True if js_disabled is None else js_disabled
-    print(js_disabled)
-    match js_trigger:
-        case False:
-            response.set_cookie(key="Javascript-Disabled", value="False")
-        case True:
-            response.set_cookie(key="Javascript-Disabled", value="True")
+async def root(request: Request):
     headers = {"Authorization": os.environ.get("SPOTIFY_OAUTH_KEY")}
     spot_response = requests.get(
         "https://api.spotify.com/v1/me/player/currently-playing?market=AU",
@@ -41,7 +31,6 @@ async def root(request: Request, response: Response, js_trigger: bool = False):
         "index.html",
         {
             "request": request,
-            "javascript_status": js_disabled,
             "data": data
         },
     )
@@ -65,6 +54,11 @@ async def web(request: Request):
 @app.get("/services.html")
 async def web_services(request: Request):
     return templates.TemplateResponse("services.html", {"request": request})
+
+
+@app.get("/space")
+async def space(request: Request):
+    return templates.TemplateResponse("space.html", {"request": request})
 
 
 @app.exception_handler(404)
