@@ -69,7 +69,7 @@ async def web(request: Request):
     return templates.TemplateResponse("interwebs.html", {"request": request})
 
 
-@app.get("/services.html")
+@app.get("/services")
 async def web_services(request: Request):
     return templates.TemplateResponse("services.html", {"request": request})
 
