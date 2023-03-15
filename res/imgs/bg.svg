@@ -1,0 +1,230 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+	<title>New Project(4)</title>
+	<defs>
+		<image  width="1920" height="1080" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4AQMAAADSHVMAAAAAAXNSR0IB2cksfwAAAANQTFRFAAAAp3o92gAAARNJREFUeJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCnAfjlAAGZJYkPAAAAAElFTkSuQmCC"/>
+		<image  width="273" height="171" id="img2" href="data:image/png;base64,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"/>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: #ffffff;paint-order:stroke fill markers;stroke-linejoin: round;stroke-width: 6 } 
+		.s1 { fill: #000000;stroke: #ffffff;paint-order:stroke fill markers;stroke-linejoin: round;stroke-width: 6 } 
+		.s2 { fill: #000000 } 
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+	<path id="Shape 1 copy 178" class="s0" d="m844.8 394.6l155.4 39.3v102.7l-155.4-38.1z"/>
+	<path id="Shape 1 copy 179" class="s0" d="m920.7 413.7l79.5 20.5v102.7l-79.5-19.3z"/>
+	<path id="Shape 1 copy 180" class="s0" d="m845.9 511.3l155.4 39.3v102.7l-155.4-38.1z"/>
+	<path id="Shape 1 copy 181" class="s0" d="m921.9 530.4l79.4 20.5v102.7l-79.4-19.3z"/>
+	<path id="Shape 1" class="s0" d="m-135 398.2l429-110.2v984.4h-429z"/>
+	<path id="Shape 1 copy 4" class="s0" d="m172 356.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 5" class="s0" d="m52 386.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 24" class="s0" d="m685.2 456.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 167" class="s0" d="m751.2 426.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 168" class="s0" d="m686.2 572.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 169" class="s0" d="m752.2 542.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 170" class="s0" d="m686.2 688.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 171" class="s0" d="m752.2 658.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 172" class="s0" d="m687.2 804.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 173" class="s0" d="m753.2 774.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 174" class="s0" d="m686.2 921.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 175" class="s0" d="m752.2 891.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 176" class="s0" d="m687.2 1037.1l135-61.2v102.7l-135 62.4z"/>
+	<path id="Shape 1 copy 177" class="s0" d="m753.2 1007.1l69-30.9v102.7l-69 32.1z"/>
+	<path id="Shape 1 copy 6" class="s0" d="m-72 414.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 7" class="s0" d="m176 576.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 8" class="s0" d="m56 606.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 9" class="s0" d="m-68 634.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 10" class="s0" d="m180 796.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 11" class="s0" d="m60 826.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 12" class="s0" d="m-64 854.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 13" class="s0" d="m182 1014.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 14" class="s0" d="m62 1044.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 15" class="s0" d="m-62 1072.2l94.3-24.2v193.8l-94.3 22.6z"/>
+	<path id="Shape 1 copy 16" class="s0" d="m318 323l69.3 25.7-1.8 200.2-67.5-25.8z"/>
+	<path id="Shape 1 copy 17" class="s0" d="m413.5 358.3l70.3 25.9-1.8 201.7-68.5-26.2z"/>
+	<path id="Shape 1 copy 18" class="s0" d="m318 546l69.3 25.7-1.8 200.2-67.5-25.8z"/>
+	<path id="Shape 1 copy 19" class="s0" d="m413.5 581.3l70.3 25.9-1.8 201.7-68.5-26.2z"/>
+	<path id="Shape 1 copy 20" class="s0" d="m318 768l69.3 25.7-1.8 200.2-67.5-25.8z"/>
+	<path id="Shape 1 copy 21" class="s0" d="m413.5 803.3l70.3 25.9-1.8 201.7-68.5-26.2z"/>
+	<path id="Shape 1 copy 22" class="s0" d="m316 991l69.3 25.7-1.8 200.2-67.5-25.8z"/>
+	<path id="Shape 1 copy 23" class="s0" d="m411.5 1026.3l70.3 25.9-1.8 201.7-68.5-26.2z"/>
+	<use id="Layer 1" href="#img2" x="556" y="78"/>
+	<path id="Shape 1 copy 2" class="s1" d="m836 614.7l170-68.4v1141.4h-170z"/>
+	<path id="Shape 1 copy 3" class="s0" d="m678 450.5l154-68v1237h-154z"/>
+	<path id="Shape 2" class="s0" d="m297 289l209 76.7v856.3h-209z"/>
+	<path id="Shape 2 copy" class="s0" d="m1198 64l281.4 74.2 5.6 965.8h-287z"/>
+	<path id="Shape 2 copy 2" class="s0" d="m832 382l276 72.5v967.5h-276z"/>
+	<path id="Shape 1 copy" class="s1" d="m1012 168l182-110v1222h-182z"/>
+	<path id="Shape 1 copy 182" class="s0" d="m860 616.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 183" class="s0" d="m911 596.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 184" class="s0" d="m960 577.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 185" class="s0" d="m862 860.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 186" class="s0" d="m913 840.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 187" class="s0" d="m962 821.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 188" class="s0" d="m865 1101.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 189" class="s0" d="m916 1081.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 190" class="s0" d="m965 1062.6l18.9-8.9v221.2l-18.9 7.1z"/>
+	<path id="Shape 1 copy 25" class="s0" d="m1026 177.9l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 26" class="s0" d="m1026 312.8l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 27" class="s0" d="m1026.5 179.2l37.8-24.7-0.1 75.6-37.3 20.6z"/>
+	<path id="Shape 1 copy 28" class="s0" d="m1083.5 142.6l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 29" class="s0" d="m1083.5 277.4l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 30" class="s0" d="m1084 143.9l37.8-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 31" class="s0" d="m1027.7 409.1l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 32" class="s0" d="m1027.7 544l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 33" class="s0" d="m1028.2 410.4l37.9-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 34" class="s0" d="m1085.2 373.8l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 35" class="s0" d="m1085.2 508.6l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 36" class="s0" d="m1085.7 375.1l37.8-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 37" class="s0" d="m1027.7 640.3l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 38" class="s0" d="m1027.7 775.1l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 39" class="s0" d="m1028.2 641.6l37.9-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 43" class="s0" d="m1139 107.9l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 44" class="s0" d="m1139 242.8l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 45" class="s0" d="m1139.5 109.2l37.8-24.7-0.1 75.6-37.3 20.6z"/>
+	<path id="Shape 1 copy 46" class="s0" d="m1140.7 339.1l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 47" class="s0" d="m1140.7 474l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 48" class="s0" d="m1141.2 340.4l37.9-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 49" class="s0" d="m1140.7 570.3l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 50" class="s0" d="m1140.7 705.1l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 51" class="s0" d="m1141.2 571.6l37.9-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 40" class="s0" d="m1085.2 605l38.8-24.6v218.8l-38.8 23.4z"/>
+	<path id="Shape 1 copy 41" class="s0" d="m1085.2 739.8l38.8-21.4v80.6l-38.8 23.4z"/>
+	<path id="Shape 1 copy 42" class="s0" d="m1085.7 606.3l37.8-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 52" class="s0" d="m1028 873.9l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 53" class="s0" d="m1028 1008.8l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 54" class="s0" d="m1028.5 875.2l37.8-24.7-0.1 75.6-37.3 20.6z"/>
+	<path id="Shape 1 copy 55" class="s0" d="m1085.5 838.6l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 56" class="s0" d="m1085.5 973.4l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 57" class="s0" d="m1086 839.9l37.8-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 58" class="s0" d="m1029.7 1105.1l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 59" class="s0" d="m1029.7 1240l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 60" class="s0" d="m1030.2 1106.4l37.9-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 61" class="s0" d="m1087.2 1069.8l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 62" class="s0" d="m1087.2 1204.6l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 63" class="s0" d="m1087.7 1071.1l37.8-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 64" class="s0" d="m1029.7 1336.3l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 65" class="s0" d="m1029.7 1471.1l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 66" class="s0" d="m1030.2 1337.6l37.9-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 67" class="s0" d="m1141 803.9l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 68" class="s0" d="m1141 938.8l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 69" class="s0" d="m1141.5 805.2l37.8-24.7-0.1 75.6-37.3 20.6z"/>
+	<path id="Shape 1 copy 70" class="s0" d="m1142.7 1035.1l38.8-24.6v218.9l-38.8 23.4z"/>
+	<path id="Shape 1 copy 71" class="s0" d="m1142.7 1170l38.8-21.5v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 72" class="s0" d="m1143.2 1036.4l37.9-24.7-0.2 75.6-37.3 20.5z"/>
+	<path id="Shape 1 copy 73" class="s0" d="m1142.7 1266.3l38.8-24.6v218.9l-38.8 23.3z"/>
+	<path id="Shape 1 copy 74" class="s0" d="m1142.7 1401.1l38.8-21.4v80.6l-38.8 23.5z"/>
+	<path id="Shape 1 copy 75" class="s0" d="m1143.2 1267.6l37.9-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 76" class="s0" d="m1087.2 1301l38.8-24.6v218.8l-38.8 23.4z"/>
+	<path id="Shape 1 copy 77" class="s0" d="m1087.2 1435.8l38.8-21.4v80.6l-38.8 23.4z"/>
+	<path id="Shape 1 copy 78" class="s0" d="m1087.7 1302.3l37.8-24.8-0.2 75.7-37.3 20.5z"/>
+	<path id="Shape 1 copy 79" class="s0" d="m1210 81.4l38.9 10.7v217.4l-38.9-11.6z"/>
+	<path id="Shape 1 copy 80" class="s0" d="m1210 215.5l38.9 13.7v80.1l-38.9-11.6z"/>
+	<path id="Shape 1 copy 81" class="s0" d="m1210.5 83.2l38 9.6-0.2 75-37.4-13.3z"/>
+	<path id="Shape 1 copy 82" class="s0" d="m1267.6 98.2l38.8 10.7v217.1l-38.8-11.6z"/>
+	<path id="Shape 1 copy 83" class="s0" d="m1267.6 232.2l38.8 13.6v80l-38.8-11.6z"/>
+	<path id="Shape 1 copy 84" class="s0" d="m1268.1 100l37.8 9.6-0.1 74.9-37.3-13.2z"/>
+	<path id="Shape 1 copy 85" class="s0" d="m1211.7 312.9l39 10.4v217.5l-39-11.5z"/>
+	<path id="Shape 1 copy 86" class="s0" d="m1211.7 447l39 13.4v80.1l-39-11.3z"/>
+	<path id="Shape 1 copy 87" class="s0" d="m1212.2 314.6l38 9.4-0.2 75-37.4-13z"/>
+	<path id="Shape 1 copy 88" class="s0" d="m1269.3 329.4l38.8 10.4v217.1l-38.8-11.4z"/>
+	<path id="Shape 1 copy 89" class="s0" d="m1269.3 463.3l38.8 13.4v80l-38.8-11.3z"/>
+	<path id="Shape 1 copy 90" class="s0" d="m1269.8 331.1l37.9 9.4-0.2 74.9-37.3-13z"/>
+	<path id="Shape 1 copy 91" class="s0" d="m1211.7 542.8l39 10.2v217.5l-39-11.3z"/>
+	<path id="Shape 1 copy 92" class="s0" d="m1211.7 676.9l39 13.2v80.1l-39-11.1z"/>
+	<path id="Shape 1 copy 93" class="s0" d="m1212.2 544.5l38 9.2-0.2 75-37.4-12.8z"/>
+	<path id="Shape 1 copy 94" class="s0" d="m1323.1 113.9l38.7 10.6v216.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 95" class="s0" d="m1323.1 247.7l38.7 13.6v79.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 96" class="s0" d="m1323.6 115.7l37.8 9.6-0.2 74.8-37.2-13.2z"/>
+	<path id="Shape 1 copy 97" class="s0" d="m1324.8 344.8l38.8 10.4v216.8l-38.8-11.4z"/>
+	<path id="Shape 1 copy 98" class="s0" d="m1324.8 478.5l38.8 13.4v79.9l-38.8-11.3z"/>
+	<path id="Shape 1 copy 99" class="s0" d="m1325.3 346.5l37.8 9.4-0.2 74.8-37.2-13z"/>
+	<path id="Shape 1 copy 106" class="s0" d="m1212 775.4l38.9 10v217.4l-38.9-11z"/>
+	<path id="Shape 1 copy 107" class="s0" d="m1212 909.5l38.9 13v80.1l-38.9-10.9z"/>
+	<path id="Shape 1 copy 108" class="s0" d="m1212.5 777.1l38 9-0.2 75-37.4-12.6z"/>
+	<path id="Shape 1 copy 112" class="s0" d="m1213.7 1006.8l39 9.8v217.4l-39-10.8z"/>
+	<path id="Shape 1 copy 113" class="s0" d="m1213.7 1140.9l39 12.8v80.1l-39-10.7z"/>
+	<path id="Shape 1 copy 114" class="s0" d="m1214.2 1008.6l38 8.7-0.2 75-37.4-12.4z"/>
+	<path id="Shape 1 copy 118" class="s0" d="m1213.7 1236.7l39 9.6v217.4l-39-10.6z"/>
+	<path id="Shape 1 copy 119" class="s0" d="m1213.7 1370.8l39 12.6v80.1l-39-10.5z"/>
+	<path id="Shape 1 copy 120" class="s0" d="m1214.2 1238.5l38 8.5-0.2 75-37.4-12.2z"/>
+	<path id="Shape 1 copy 127" class="s0" d="m1326.8 1266l38.7 9.5v216.9l-38.7-10.5z"/>
+	<path id="Shape 1 copy 128" class="s0" d="m1326.8 1399.8l38.7 12.5v79.8l-38.7-10.4z"/>
+	<path id="Shape 1 copy 129" class="s0" d="m1327.3 1267.8l37.8 8.5-0.2 74.8-37.2-12.2z"/>
+	<path id="Shape 1 copy 133" class="s0" d="m1377.1 127.9l38.7 10.6v216.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 134" class="s0" d="m1377.1 261.7l38.7 13.6v79.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 135" class="s0" d="m1377.6 129.7l37.8 9.6-0.2 74.8-37.2-13.2z"/>
+	<path id="Shape 1 copy 136" class="s0" d="m1378.8 358.8l38.8 10.4v216.8l-38.8-11.4z"/>
+	<path id="Shape 1 copy 137" class="s0" d="m1378.8 492.5l38.8 13.4v79.9l-38.8-11.3z"/>
+	<path id="Shape 1 copy 138" class="s0" d="m1379.3 360.5l37.8 9.4-0.2 74.8-37.2-13z"/>
+	<path id="Shape 1 copy 139" class="s0" d="m1378.8 588l38.8 10.2v216.9l-38.8-11.2z"/>
+	<path id="Shape 1 copy 140" class="s0" d="m1378.8 721.8l38.8 13.1v79.9l-38.8-11.1z"/>
+	<path id="Shape 1 copy 141" class="s0" d="m1379.1 820l38.7 9.9v216.9l-38.7-11z"/>
+	<path id="Shape 1 copy 142" class="s0" d="m1379.1 953.7l38.7 13v79.8l-38.7-10.8z"/>
+	<path id="Shape 1 copy 143" class="s0" d="m1379.6 821.7l37.8 9-0.2 74.8-37.2-12.6z"/>
+	<path id="Shape 1 copy 144" class="s0" d="m1380.8 1050.8l38.7 9.7v216.9l-38.7-10.8z"/>
+	<path id="Shape 1 copy 145" class="s0" d="m1380.8 1184.5l38.7 12.7v79.9l-38.7-10.6z"/>
+	<path id="Shape 1 copy 146" class="s0" d="m1381.3 1052.5l37.8 8.7-0.2 74.8-37.2-12.3z"/>
+	<path id="Shape 1 copy 147" class="s0" d="m1380.8 1280l38.7 9.5v216.9l-38.7-10.5z"/>
+	<path id="Shape 1 copy 148" class="s0" d="m1380.8 1413.8l38.7 12.5v79.8l-38.7-10.4z"/>
+	<path id="Shape 1 copy 149" class="s0" d="m1381.3 1281.8l37.8 8.5-0.2 74.8-37.2-12.2z"/>
+	<path id="Shape 1 copy 150" class="s0" d="m1430.1 139.9l38.7 10.6v216.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 151" class="s0" d="m1430.1 273.7l38.7 13.6v79.9l-38.7-11.6z"/>
+	<path id="Shape 1 copy 152" class="s0" d="m1430.6 141.7l37.8 9.6-0.2 74.8-37.2-13.2z"/>
+	<path id="Shape 1 copy 153" class="s0" d="m1431.8 370.8l38.8 10.4v216.8l-38.8-11.4z"/>
+	<path id="Shape 1 copy 154" class="s0" d="m1431.8 504.5l38.8 13.4v79.9l-38.8-11.3z"/>
+	<path id="Shape 1 copy 155" class="s0" d="m1432.3 372.5l37.8 9.4-0.2 74.8-37.2-13z"/>
+	<path id="Shape 1 copy 156" class="s0" d="m1431.8 600l38.8 10.2v216.9l-38.8-11.2z"/>
+	<path id="Shape 1 copy 157" class="s0" d="m1431.8 733.8l38.8 13.1v79.9l-38.8-11.1z"/>
+	<path id="Shape 1 copy 158" class="s0" d="m1432.1 832l38.7 9.9v216.9l-38.7-11z"/>
+	<path id="Shape 1 copy 159" class="s0" d="m1432.1 965.7l38.7 13v79.8l-38.7-10.8z"/>
+	<path id="Shape 1 copy 160" class="s0" d="m1432.6 833.7l37.8 9-0.2 74.8-37.2-12.6z"/>
+	<path id="Shape 1 copy 161" class="s0" d="m1433.8 1062.8l38.7 9.7v216.9l-38.7-10.8z"/>
+	<path id="Shape 1 copy 162" class="s0" d="m1433.8 1196.5l38.7 12.7v79.9l-38.7-10.6z"/>
+	<path id="Shape 1 copy 163" class="s0" d="m1434.3 1064.5l37.8 8.7-0.2 74.8-37.2-12.3z"/>
+	<path id="Shape 1 copy 164" class="s0" d="m1433.8 1292l38.7 9.5v216.9l-38.7-10.5z"/>
+	<path id="Shape 1 copy 165" class="s0" d="m1433.8 1425.8l38.7 12.5v79.8l-38.7-10.4z"/>
+	<path id="Shape 1 copy 166" class="s0" d="m1434.3 1293.8l37.8 8.5-0.2 74.8-37.2-12.2z"/>
+	<path id="Shape 1 copy 130" class="s0" d="m1271.3 1251.9l38.8 9.5v217.2l-38.8-10.6z"/>
+	<path id="Shape 1 copy 131" class="s0" d="m1271.3 1385.8l38.8 12.5v80l-38.8-10.4z"/>
+	<path id="Shape 1 copy 132" class="s0" d="m1271.8 1253.7l37.9 8.5-0.2 74.9-37.3-12.2z"/>
+	<path id="Shape 3" class="s1" d="m1376 677.8l565-130.8v841h-565z"/>
+	<path id="Shape 5" class="s0" d="m1446.1 927.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy" class="s0" d="m1578.1 977.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 2" class="s0" d="m1510.1 1096.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 3" class="s0" d="m1644.1 1144.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 4" class="s0" d="m1711.1 1025.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 5" class="s0" d="m1777.1 1192.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 6" class="s0" d="m1844.1 1072.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 7" class="s0" d="m1777.1 906.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 8" class="s0" d="m1909.1 952.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 9" class="s0" d="m1976.1 1121.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 10" class="s0" d="m1908.1 1239.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 11" class="s0" d="m1646.1 857.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 12" class="s0" d="m1377.1 1042.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 6" class="s2" d="m1268 745h105v410h-105z"/>
+	<path id="Shape 1 copy 100" class="s0" d="m1324.8 574l38.8 10.2v216.9l-38.8-11.2z"/>
+	<path id="Shape 1 copy 101" class="s0" d="m1324.8 707.8l38.8 13.1v79.9l-38.8-11.1z"/>
+	<path id="Shape 1 copy 102" class="s0" d="m1325.3 575.8l37.8 9.1-0.2 74.8-37.2-12.7z"/>
+	<path id="Shape 1 copy 103" class="s0" d="m1269.3 559l38.8 10.2v217.1l-38.8-11.2z"/>
+	<path id="Shape 1 copy 104" class="s0" d="m1269.3 692.9l38.8 13.2v80l-38.8-11.2z"/>
+	<path id="Shape 1 copy 105" class="s0" d="m1269.8 560.7l37.9 9.2-0.2 74.9-37.3-12.8z"/>
+	<path id="Shape 1 copy 109" class="s0" d="m1269.6 791.2l38.8 10v217.2l-38.8-11z"/>
+	<path id="Shape 1 copy 110" class="s0" d="m1269.6 925.1l38.8 13v80l-38.8-10.9z"/>
+	<path id="Shape 1 copy 111" class="s0" d="m1270.1 793l37.8 8.9-0.1 74.9-37.3-12.6z"/>
+	<path id="Shape 1 copy 115" class="s0" d="m1271.3 1022.3l38.8 9.8v217.1l-38.8-10.7z"/>
+	<path id="Shape 1 copy 116" class="s0" d="m1271.3 1156.2l38.8 12.8v80l-38.8-10.7z"/>
+	<path id="Shape 1 copy 117" class="s0" d="m1271.8 1024.1l37.9 8.7-0.2 74.9-37.3-12.4z"/>
+	<path id="Shape 1 copy 121" class="s0" d="m1325.1 806l38.7 9.9v216.9l-38.7-11z"/>
+	<path id="Shape 1 copy 122" class="s0" d="m1325.1 939.7l38.7 13v79.8l-38.7-10.8z"/>
+	<path id="Shape 1 copy 123" class="s0" d="m1325.6 807.7l37.8 9-0.2 74.8-37.2-12.6z"/>
+	<path id="Shape 1 copy 124" class="s0" d="m1326.8 1036.8l38.7 9.7v216.9l-38.7-10.8z"/>
+	<path id="Shape 1 copy 125" class="s0" d="m1326.8 1170.5l38.7 12.7v79.9l-38.7-10.6z"/>
+	<path id="Shape 1 copy 126" class="s0" d="m1327.3 1038.5l37.8 8.7-0.2 74.8-37.2-12.3z"/>
+	<path id="Shape 5 copy 13" class="s0" d="m1514.1 809.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 14" class="s0" d="m1713.1 739.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 15" class="s0" d="m1845.1 786.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 5 copy 16" class="s0" d="m1976.1 834.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+	<path id="Shape 3 copy" class="s1" d="m1433.1 598.8l509.9-113.8v58.8l-565 132.2z"/>
+	<path id="Shape 3 copy 4" class="s1" d="m1375.9 695.8l557.1-128.8v67.8l-558 121.2z"/>
+	<path id="Shape 5 copy 17" class="s0" d="m1439.1 1209.7l-60.5-68.5 0.1-88.7 60.5-20.2 60.5 68.5-0.1 88.6z"/>
+</svg>
