@@ -64,9 +64,9 @@ async def legal(request: Request):
     return templates.TemplateResponse("legal.html", {"request": request})
 
 
-@app.get("/interwebs")
+@app.get("/web")
 async def web(request: Request):
-    return templates.TemplateResponse("interwebs.html", {"request": request})
+    return templates.TemplateResponse("web.html", {"request": request})
 
 
 @app.get("/services")
