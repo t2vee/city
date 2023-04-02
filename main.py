@@ -7,13 +7,19 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 app.mount("/res", StaticFiles(directory="res"), name="res")
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 scope = "user-read-currently-playing"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
@@ -21,6 +27,7 @@ results = sp.current_user_playing_track()
 
 
 @app.get("/", response_class=HTMLResponse)
+@limiter.limit("40/minute")
 async def root(request: Request):
     spot_response = await spot.get_spotify_track()
     if spot_response is None:
@@ -54,33 +61,35 @@ async def posts(request: Request):
     return templates.TemplateResponse("posts.html", {"request": request, "posts": post_list})
 
 
-@app.get("/about")
-async def about(request: Request):
-    return templates.TemplateResponse("about.html", {"request": request})
+# @app.get("/about")
+# async def about(request: Request):
+#    return templates.TemplateResponse("about.html", {"request": request})
 
 
 @app.get("/legal")
+@limiter.limit("60/minute")
 async def legal(request: Request):
     return templates.TemplateResponse("legal.html", {"request": request})
 
 
-@app.get("/web")
-async def web(request: Request):
-    return templates.TemplateResponse("web.html", {"request": request})
+# @app.get("/web")
+# async def web(request: Request):
+#    return templates.TemplateResponse("web.html", {"request": request})
 
 
-@app.get("/services")
-async def web_services(request: Request):
-    return templates.TemplateResponse("services.html", {"request": request})
+# @app.get("/services")
+# async def web_services(request: Request):
+#    return templates.TemplateResponse("services.html", {"request": request})
 
 
 @app.get("/space")
+@limiter.limit("60/minute")
 async def space(request: Request):
     return templates.TemplateResponse("space.html", {"request": request})
 
 
 @app.exception_handler(404)
-async def except_404(request, Request):
+async def except_404(request: Request):
     return templates.TemplateResponse("404.html", {"request": request})
 
 

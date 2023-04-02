@@ -1,37 +1,9 @@
-@font-face{font-family:Asap;src:url("../font/Asap-Regular.woff2")}
-html{background-color:#000;color:#fff;font-family:Asap}
-html{height: 100%;overflow: auto;}
-html a{text-decoration:none;color:#fff;}
-html a:hover{color:grey;text-decoration:none;}
-footer{text-align:center;}
-footer a{text-decoration:none;padding:0 15px;color:#fff;}
-footer a:hover{color:grey;text-decoration:none}
-.logo{margin-bottom:10px;height:100px}
-.servicebox{font-size: 15px;padding: 3px;margin-left: 10px;background-color: white;color: #181A1B;border-radius: 5px;text-decoration: none;border-bottom: 2px solid grey;cursor: pointer;}
+.servicebox{font-size: 12px;padding: 3px;margin-left: 10px;background-color: white;color: #181A1B;border-radius: 5px;text-decoration: none;border-bottom: 2px solid grey;cursor: pointer;
+  max-height: 30px;width:120px;display:inline-flex;margin: 2px;text-align: center;}
 .servicebox:hover{color: white;background-color: grey;border-top: 1px solid grey;border-bottom: 0px;-webkit-box-shadow: inset 0px 4px 0px 0px #0A0E12;-moz-box-shadow: inset 0px 4px 0px 0px #0A0E12;box-shadow: inset 0px 0px 4px 0px #0A0E12;cursor: pointer;}
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.external_link {
+  width: 10px !important;
 }
-
-.container {
-  width: 24em;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.servicebox {
-  margin: 10px;
-  text-align: center;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 20px;
-  width: 27em;
+.servicebox img {
+  width: 35px;
 }
