@@ -72,16 +72,6 @@ async def legal(request: Request):
     return templates.TemplateResponse("legal.html", {"request": request})
 
 
-# @app.get("/web")
-# async def web(request: Request):
-#    return templates.TemplateResponse("web.html", {"request": request})
-
-
-# @app.get("/services")
-# async def web_services(request: Request):
-#    return templates.TemplateResponse("services.html", {"request": request})
-
-
 @app.get("/space")
 @limiter.limit("60/minute")
 async def space(request: Request):
