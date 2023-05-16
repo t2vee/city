@@ -42,7 +42,7 @@ async def root(request: Request):
     files = os.listdir("data/posts")
     files.sort(key=lambda x: os.path.getmtime(os.path.join("data/posts", x)), reverse=True)
     return templates.TemplateResponse(
-        "index.html",
+        "new_index.html",
         {
             "request": request,
             "post": files[0].replace(".md", ""),
