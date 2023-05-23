@@ -61,6 +61,7 @@
   <a style="top: 610px;" class="link" href="/space">space</a>
   <a style="top: 640px;" class="link" href="/legal">legal</a>
   <a style="top: 670px;" class="link" href="mailto:me@t2v.ch">email</a>
+  <a style="top: 700px;" class="link" href="/?action=v1">back</a>
   <marquee scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();" style="position: absolute; width: 510px; right: 10px; transform: skewX(-20deg) rotate(-14deg); top: 625px; font-size: 50px; position: absolute; color: #1DB954" color: white;">{{ "currently not listening to anything" if not data[3] else "currently listening to: " }}<span style="{{ "display: none;" if not data[3] }}"><a style="padding: 0;" target="_blank" href="{{ data[4] }}">{{ data[0] }} <span><img src="/res/imgs/external_link.png" style="width: 30px"/></span></a><span style="color: dimgrey;"> In Album </span><a style="padding: 0;" target="_blank" href="{{ data[5] }}">{{ data[1] }} <span><img src="/res/imgs/external_link.png" style="width: 30px"/></span></a><span style="color: dimgrey;"> By </span><a style="padding: 0;" target="_blank" href="{{ data[6] }}">{{ data[2] }} <span><img src="/res/imgs/external_link.png" style="width: 30px"/></span></a></span></marquee><!--</span></p>-->
 
 </body>
