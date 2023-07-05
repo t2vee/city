@@ -6,4 +6,5 @@ unnecessary python based html site.
 uses the fastapi web server just so i can get current spotify stats  
 <br/><br/>
 
-uses the `?action=[v3,v2,v1]` parameter to allow viewing of older iterations of the site
+~~uses the `?action=[v3,v2,v1]` parameter to allow viewing of older iterations of the site~~
+can no longer view legacy material
