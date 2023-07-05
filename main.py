@@ -3,8 +3,9 @@ import json
 import spot
 import spotipy
 import uvicorn
+import requests
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -31,56 +32,40 @@ results = sp.current_user_playing_track()
 async def root(request: Request, action: str = 'Latest'):
     spot_response = await spot.get_spotify_track()
     if spot_response is None:
-        data = ['', '', '', False]
+        spotify_payload = ['', '', '', False]
     else:
         spot_data = json.loads(json.dumps(spot_response))
+        spotify_payload = [spot_data["item"]["name"][:24-3] + "..." if len(spot_data["item"]["name"]) > 24 else spot_data["item"]["name"], spot_data["item"]["album"]["name"][:24-3] + "..." if len(spot_data["item"]["album"]["name"]) > 24 else spot_data["item"]["album"]["name"],
+                           spot_data["item"]["artists"][0]["name"][:24-3] + "..." if len(spot_data["item"]["artists"][0]["name"]) > 24 else spot_data["item"]["artists"][0]["name"],
+                           True, spot_data["item"]["external_urls"]["spotify"],
+                           spot_data["item"]["album"]["external_urls"]["spotify"],
+                           spot_data["item"]["artists"][0]["external_urls"]["spotify"],
+                           spot_data["item"]["album"]["images"][2]["url"]]
 
-        data = [spot_data["item"]["name"], spot_data["item"]["album"]["name"], spot_data["item"]["artists"][0]["name"],
-                True, spot_data["item"]["external_urls"]["spotify"],
-                spot_data["item"]["album"]["external_urls"]["spotify"],
-                spot_data["item"]["artists"][0]["external_urls"]["spotify"]]
-    files = os.listdir("data/posts")
-    files.sort(key=lambda x: os.path.getmtime(os.path.join("data/posts", x)), reverse=True)
-    match action:
-        case 'Latest':
-            return templates.TemplateResponse("new_index.html", {"request": request, "post": files[0].replace(".md", ""), "data": data}, )
-        case 'v1':
-            return templates.TemplateResponse("old_index.html", {"request": request, "post": files[0].replace(".md", ""), "data": data}, )
-        case 'v2':
-            return templates.TemplateResponse("old_old_index.html", {"request": request, "post": files[0].replace(".md", ""), "data": data}, )
-        case 'v3':
-            return templates.TemplateResponse("index.html", {"request": request, "post": files[0].replace(".md", ""), "data": data}, )
-
-@app.get("/posts")
-async def posts(request: Request):
-    post_list = []
-    for filename in os.listdir("data/posts"):
-        post_list.append(filename)
-
-    print(post_list)
-    return templates.TemplateResponse("posts.html", {"request": request, "posts": post_list})
+    return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload}, )
 
 
-# @app.get("/about")
-# async def about(request: Request):
-#    return templates.TemplateResponse("about.html", {"request": request})
+#@app.get("/stats")
+#@limiter.limit("60/minute")
+#async def space(request: Request):
+#    return templates.TemplateResponse("stats.html", {"request": request})
 
 
-@app.get("/legal")
+@app.get("/content_proxy")
 @limiter.limit("60/minute")
-async def legal(request: Request):
-    return templates.TemplateResponse("legal.html", {"request": request})
-
-
-@app.get("/space")
-@limiter.limit("60/minute")
-async def space(request: Request):
-    return templates.TemplateResponse("space.html", {"request": request})
+def proxy(request: Request, uri: str):
+    response = requests.get(uri, stream=True)
+    return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
 
 
 @app.exception_handler(404)
-async def except_404(request: Request):
+async def custom_404_handler(request, __):
     return templates.TemplateResponse("404.html", {"request": request})
+
+
+@app.get('/favicon.ico', include_in_schema=False)
+async def favicon():
+    return FileResponse("res/imgs/favicon.ico")
 
 
 if __name__ == "__main__":

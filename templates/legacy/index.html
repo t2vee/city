@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="darkreader-lock">
+    <meta charset="utf-8">
+    <link rel="icon" href="../res/imgs/t2v_square_minified_favicon.webp">
+    <link rel="stylesheet" href="../res/style/web.min.css" />
+    <title>home of t2v</title>
+    <style>
+      @font-face {
+          font-family: Asap;
+          src: url('/res/font/Asap-Regular.woff2');
+      }
+      html {
+        font-family: Asap;
+        background-color: #000;
+        color: white;
+      }
+      html a {
+
+         text-decoration: none;
+         font-size: 14px;
+      }
+      html a:hover {
+          color: grey;
+          text-decoration: none;
+      }
+      .wrapper {
+        font-size: 14px !important;
+        width: 455px;
+        border: 1px solid white;
+          margin: 10px auto;
+          padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+        position: relative;
+      }
+        .wrapper a {
+            color: white;
+        }
+        .side-panel {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 50px;
+          background-color: gray;
+        }
+    </style>
+    <script>
+      var _paq = window._paq = window._paq || [];
+      _paq.push(["setCookieDomain", "*.t2v.city"]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//targets-userservices.t2v.city/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//targets-userservices.t2v.city/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+</head>
+<body>
+    <div class="wrapper">
+        <header style="background-image: url('/res/imgs/header.webp');background-size: cover;height:200px;">
+            <div style="text-align: center;position:relative;">
+                <a href="/"><img style="height:50px;position:absolute;top:150px;right:0;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.png" alt="logo" /></a>
+                <a href="https://unsplash.com/@mroz" style="color: grey;position:absolute;top:190px;left:2px;font-size:10px;" onmouseover="this.style.color='white';" onmouseout="this.style.color='grey';">by filip mroz</a>
+            </div>
+        </header>
+    </div>
+    <div class="wrapper">
+        <p style="width:100%;color:lime;display:inline;white-space:nowrap;margin:0 5px 0 5px">currently listening to: {{ "nothing" if not data[3] }}<span><marquee scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();" style="font-size: 14px; color: #1DB954" color: white;"><span style="{{ "display: none;" if not data[3] }}"><a style="padding: 0;" target="_blank" href="{{ data[4] }}">{{ data[0] }} <span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a><span style="color: dimgrey;"> In Album </span><a style="padding: 0;" target="_blank" href="{{ data[5] }}">{{ data[1] }} <span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a><span style="color: dimgrey;"> By </span><a style="padding: 0;" target="_blank" href="{{ data[6] }}">{{ data[2] }} <span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a></span></marquee></span></p>
+    </div>
+    <div class="wrapper">
+        <div style="padding:0 10px 0 10px;">
+            <h3>Hi there! 👋</h3>
+            <p>I'm t2v (as myself), a sysadmin and developer from Australia. I generally focus on self-hosting services, homelabbing and working on small projects.</p>
+            <p>t2v (as a 'brand') is a small collection of infastructure and services based in aus. It focuses on things like archival services, game servers and a testing ground for foss projects. </p>
+        </div>
+    </div>
+    <div class="wrapper" style="text-align:center;">
+        <p style="width:100%;display:inline;white-space:nowrap;margin:0 5px 0 5px"><span>
+            <a href="https://ttea.dev" target="_blank" > git <span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a>
+        </span> // <span><a href="https://archive.t2v.city" target="_blank"> archive <span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a> //
+            <span><a href="/space"> space </a></span> //
+            <span><a href="/legal"> legal </a></span> //
+            <span><a href="mailto:me@t2v.ch"> email </a></span></span></p>
+    </div>
+    <div class="wrapper" style="text-align: center;font-size: 12px">
+                <h3>Publicly Available Services</h3>
+                <p>Here you can find all the open services from t2v. Mostly privacy and performance based front-end alternatives to popular services.</p>
+                <p>Please make sure to read the <span><a style="text-decoration-line: underline;color:grey;" onmouseover="this.style.color='white';" onmouseout="this.style.color='grey';" href="/legal#terms-of-service">TOS</a></span> and <span><a style="text-decoration-line: underline;color:grey;" href="/legal#privacy-policy" onmouseover="this.style.color='white';" onmouseout="this.style.color='grey';">Privacy Policy.</a></span></p>
+                <div style="display: inline-flex;">
+                    <a href="https://nitter.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/nitter.png" />
+                            <h3>Nitter <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://proxitok.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/proxitok.webp" />
+                            <h3>Proxitok <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://libreddit.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/libreddit.png" />
+                            <h3>libreddit <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                </div>
+                <div style="display: inline-flex; padding-top: 10px;    ">
+                    <a href="https://libremdb.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/libremdb.png" />
+                            <h3>Libremdb <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://wikiless.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/wikiless.png" />
+                            <h3>Wikiless <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://rimgo.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/rimgo.svg" />
+                            <h3>Rimgo <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                </div>
+                <div style="display: inline-flex; padding-top: 10px;">
+                    <a href="https://anonymous-overflow.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/anonymousoverflow.png" />
+                            <h3>AnonOF <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://gothub.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/github.png" />
+                            <h3>Gothub <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                    <a href="https://invidious.au.pub.t2v.city" target="_blank">
+                        <div class="servicebox">
+                            <img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/invidious.svg" />
+                            <h3>Invidious <span><img src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/external_link.png" class="external_link" alt="external_link"/></span></h3>
+                        </div>
+                    </a>
+                </div>
+            <p>All services are hosted in Australia on T2V infrastructure</p>
+    </div>
+</body>
+<footer class="wrapper" style="border: none; text-align: center">
+    <p>2023 &copy; t2v</p>
+    <a href="/?action=v2"> back</a>
+</footer>
+</html>
