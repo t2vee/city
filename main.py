@@ -29,7 +29,7 @@ results = sp.current_user_playing_track()
 
 @app.get("/", response_class=HTMLResponse)
 @limiter.limit("40/minute")
-async def root(request: Request, action: str = 'Latest'):
+async def root(request: Request):
     spot_response = await spot.get_spotify_track()
     if spot_response is None:
         spotify_payload = ['', '', '', False]
