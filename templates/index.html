@@ -30,35 +30,152 @@
         color: white;
         text-decoration: underline;
       }
-  .spinny {
-      cursor: pointer;
-      position: relative;
-      font-size: 20em;
-      width: 50px;
-      height: 50px;
-      border: 2px solid darkgray;
-      border-radius: 50%;
-      margin: 5px;
-      animation: spin linear 15s infinite;
-      overflow: hidden; /* scrollbars appear without this */
-    }
+  #wrap {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .spinny__inner {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: url(/content_proxy?uri={{ data[7] }}) no-repeat center;
-      background-size: cover;
-      animation: spin linear 3s infinite;
-      animation-direction: reverse;
-      animation-play-state: paused;
+#album {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-height: 50%;
+    max-width: 124px;
+    margin: 12%;
+}
+#cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background-image: url(/spotify_thumbnail_relay?uri={{ data[7] }});
+	background-size: 100% 100%;
+	box-shadow: 5px 0 20px 0 rgba(0,0,0,0.6),
+	            inset 0 0 10px 5px rgba(255,255,255,0.2),
+			  inset 0 0 4px 2px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/3_optimised.webp');
+		background-size: 100% 100%;
+		border-radius: 4px;
+		mix-blend-mode: screen;
+		opacity: 0.5;
+		content: '';
+	}
+	&::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 20;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/2_optimised-1.webp');
+		background-size: 100% 100%;
+		border-radius: 4px;
+		mix-blend-mode: screen;
+		opacity: 0.2;
+		content: '';
+	}
+}
+#vinyl {
+		position: absolute;
+		top: 2.5%;
+		left: 36%;
+		z-index: 0;
+		width: 95%;
+		height: 95%;
+		display: block;
+		background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/1_optimised-1.webp');
+		background-size: 106% 106%;
+		background-position: center;
+		box-shadow: 0 0 20px 4px rgba(0,0,0,0.6);
+		border-radius: 50%;
+		content: '';
+		animation: 5s linear spinThat infinite;
+		&::before {
+			position: absolute;
+			top: 2.5%;
+			left: 2.5%;
+			z-index: 10;
+			width: 95%;
+			height: 95%;
+			background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/0_optimised-1.webp');
+			background-size: 100% 100%;
+			border-radius: 50%;
+			mix-blend-mode: screen;
+			opacity: 0.3;
+			content: '';
+		}
+		#print {
+			position: absolute;
+			top: 33%;
+			left: 33%;
+			height: 34%;
+			width: 34%;
+			box-shadow: inset 0 0 0 5px rgba(150,150,150,0.5);
+	background-size: cover;
+			border-radius: 50%;
+		}
+}
+@keyframes spinThat {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+    .container {
+      display: flex;
+      align-items: center;
     }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    .current-track__progress {
+  width: 70%;
+  padding: 0 30px;
+  color: #aaaaaa;
+  font-size: 11px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+progress[value] {
+  --color: green; /* the progress color */
+  --background: lightgrey; /* the background color */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width:50%;
+  margin: 0 10px;
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 10em;
+  background: var(--color);
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 10em;
+  background: var(--color);
+}
   </style>
     <noscript>
     <img src="https://track.core.t2v.city/ingress/1a79feb9-84ad-4121-82cb-cfa9ca0b4801/pixel.gif">
@@ -66,30 +183,50 @@
 <script defer src="https://track.core.t2v.city/ingress/1a79feb9-84ad-4121-82cb-cfa9ca0b4801/script.js"></script>
 </head>
 
-<body>
-  <a href="/"><img style="height:70px;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.webp" alt="logo" /></a>
-  <h1>hi there 👋</h1>
-  <p style="font-size:13px;">✨a guy playing with technology he doesnt understand✨</p>
-  <p>✉ email <strong>me [at] t2v.ch </strong> to contact me</p>
-  <div style="background-color:#189443;width:100%;border-radius:5px;max-height:70px;display:inline-flex;border-bottom:3px solid limegreen">
-    <div class="spinny" >
-      <div class="spinny__inner"></div>
-    </div>
-    <div>
-        <strong><a href="{{ data[4] }}" target="_blank" class="link" style="color:white;font-size:20px;">{{ data[0] }}</a></strong><br>
-        <a href="{{ data[5] }}" target="_blank" class="link" style="color:lightgray;font-size:15px;">{{ data[1] }}</a><br>
-        <a href="{{ data[6] }}" target="_blank" class="link" style="color:black;font-size:10px;">{{ data[2] }}</a>
-    </div>
-  </div>
-  <br>
-  <br>
+<body class="container">
+  <div>
+    <a href="/"><img style="height:70px;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.webp" alt="logo" /></a>
+    <h1>hi there 👋</h1>
+    <p style="font-size:13px;">✨a guy playing with technology he doesnt understand✨</p>
+    <p>✉ email <strong>me [at] t2v.ch </strong> to contact me</p>
   <p style="width:100%;display:inline;white-space:nowrap;margin:10px 5px 0 5px;color:white;font-size:13px;">// <span>
         i run small internet tools and services</span> //</p>
-            <!--<a href="https://redirect.t2v.city/page/#/?r=terms" target="_blank" class="link"> service usage<span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a>
-        </span> // <span><a href="https://github.com/t2vee" target="_blank" class="link"> git<span><img src="/res/imgs/external_link.png" style="width: 10px"/></span></a> //
-            <span><a href="/stats" class="link"> stats</a></span> //
-            <span><a href="/lab" class="link"> lab</a></span></span></p>
-  <p style="text-align:right;font-size:10px;padding-right:24px;">^^^ pretty cool</p>-->
+  </div>
+<div style="font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <p style="display: flex; align-items: center;"><span><img alt="spotify" style="width: 17px; padding-right: 5px;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/spotify-2-logo-svg-vector.svg"></span> currently listening to...</p>
+    <div id="wrap" style="background-color: #189443; width: 200px; border-radius: 5px; max-height: 250px; border-bottom: 3px solid limegreen; margin-left: 15px; padding-top: 1px;">
+          <div id="album">
+              <div id="cover">
+                  <div id="print"></div>
+              </div>
+              <div id="vinyl">
+                  <div id="print"></div>
+              </div>
+          </div>
+        <div style="display:flex;font-size:13px;align-items:center;justify-content:center;margin:-10px 0 10px 0">
+            <div class="current-track__progress__start" id="time_start">{{ data[8] }}</div>
+                <progress id="progress" class="current-track__progress__bar" max="{{ data[11] }}" value="{{ data[10] }}" style="height:7px"></progress>
+            <div class="current-track__progress__finish">{{ data[9] }}</div>
+        </div>
+          <strong><a href="{{ data[4] }}" target="_blank" class="link" style="color:white;font-size:20px;">{{ data[0] }}</a></strong><br>
+            <a href="{{ data[5] }}" target="_blank" class="link" style="color:lightgray;font-size:15px;">{{ data[1] }}</a><br>
+            <a href="{{ data[6] }}" target="_blank" class="link" style="color:black;font-size:10px;">{{ data[2] }}</a>
+      </div>
+  </div>
 </body>
-
+<script>
+setInterval(increaseProgressBar, 1000);
+function increaseProgressBar() {
+    const progress = document.getElementById("progress");
+    const progress_time_element = document.getElementById("time_start");
+    let currentValue = parseFloat(progress.getAttribute("value")) || 0;
+    let newValue = currentValue + 1000;
+    progress.setAttribute("value", newValue);
+    progress.setAttribute("value", newValue);
+    let minutes = Math.floor(newValue / 60000);
+    let seconds = ((newValue % 60000) / 1000).toFixed(0);
+    let finalTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    progress_time_element.textContent = finalTime;
+}
+</script>
 </html>

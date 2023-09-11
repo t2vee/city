@@ -35,12 +35,18 @@ async def root(request: Request):
         spotify_payload = ['', '', '', False]
     else:
         spot_data = json.loads(json.dumps(spot_response))
+
         spotify_payload = [spot_data["item"]["name"][:24-3] + "..." if len(spot_data["item"]["name"]) > 24 else spot_data["item"]["name"], spot_data["item"]["album"]["name"][:24-3] + "..." if len(spot_data["item"]["album"]["name"]) > 24 else spot_data["item"]["album"]["name"],
                            spot_data["item"]["artists"][0]["name"][:24-3] + "..." if len(spot_data["item"]["artists"][0]["name"]) > 24 else spot_data["item"]["artists"][0]["name"],
                            True, spot_data["item"]["external_urls"]["spotify"],
                            spot_data["item"]["album"]["external_urls"]["spotify"],
                            spot_data["item"]["artists"][0]["external_urls"]["spotify"],
-                           spot_data["item"]["album"]["images"][2]["url"]]
+                           spot_data["item"]["album"]["images"][1]["url"],
+                           f"{int(spot_data['progress_ms']/(1000*60)%60)}:{'0' + str(int(spot_data['progress_ms']/1000%60)) if int(spot_data['progress_ms']/1000%60) < 10 else int(spot_data['progress_ms']/1000%60)}",
+                           f"{int(spot_data['item']['duration_ms']/(1000*60)%60)}:{'0' + str(int(spot_data['item']['duration_ms']/1000%60)) if int(spot_data['item']['duration_ms']/1000%60) < 10 else int(spot_data['item']['duration_ms']/1000%60)}",
+                           spot_data['progress_ms'],
+                           spot_data['item']['duration_ms'],
+                           spot_data["is_playing"]]
 
     return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload}, )
 
@@ -51,7 +57,7 @@ async def root(request: Request):
 #    return templates.TemplateResponse("stats.html", {"request": request})
 
 
-@app.get("/content_proxy")
+@app.get("/spotify_thumbnail_relay")
 @limiter.limit("60/minute")
 def proxy(request: Request, uri: str):
     response = requests.get(uri, stream=True)
