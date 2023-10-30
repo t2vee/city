@@ -3,48 +3,15 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>t2v.city</title>
+  <title>vee.city</title>
+  <link rel="stylesheet" href="/css/core.css?minify=true">
   <style>
-  @font-face {
-    font-family: Asap;
-    src: url('/res/font/Asap-Regular.woff2');
+@media only screen and (max-width: 768px) {
+  p {
+    font-size: 16px;
   }
-  html {
-      background-color: black;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 100vh;
-    justify-items: center;
-    align-items: center;
-    #text-align: center;
-    color: white;
-    font-family: Asap;
-  }
-  .link {
-    color: gray;
-    text-decoration: none;
-  }
-      .link:hover {
-        color: white;
-        text-decoration: underline;
-      }
-  #wrap {
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-#album {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    max-height: 50%;
-    max-width: 124px;
-    margin: 12%;
 }
 #cover {
 	position: absolute;
@@ -53,8 +20,8 @@
 	z-index: 1;
 	width: 100%;
 	height: 100%;
-	background-image: url(/spotify_thumbnail_relay?uri={{ data[7] }});
 	background-size: 100% 100%;
+	background-image: url(/thumbnail/{{ data[7] }});
 	box-shadow: 5px 0 20px 0 rgba(0,0,0,0.6),
 	            inset 0 0 10px 5px rgba(255,255,255,0.2),
 			  inset 0 0 4px 2px rgba(0,0,0,0.2);
@@ -88,95 +55,7 @@
 		content: '';
 	}
 }
-#vinyl {
-		position: absolute;
-		top: 2.5%;
-		left: 36%;
-		z-index: 0;
-		width: 95%;
-		height: 95%;
-		display: block;
-		background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/1_optimised-1.webp');
-		background-size: 106% 106%;
-		background-position: center;
-		box-shadow: 0 0 20px 4px rgba(0,0,0,0.6);
-		border-radius: 50%;
-		content: '';
-		animation: 5s linear spinThat infinite;
-		&::before {
-			position: absolute;
-			top: 2.5%;
-			left: 2.5%;
-			z-index: 10;
-			width: 95%;
-			height: 95%;
-			background-image: url('https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/0_optimised-1.webp');
-			background-size: 100% 100%;
-			border-radius: 50%;
-			mix-blend-mode: screen;
-			opacity: 0.3;
-			content: '';
-		}
-		#print {
-			position: absolute;
-			top: 33%;
-			left: 33%;
-			height: 34%;
-			width: 34%;
-			box-shadow: inset 0 0 0 5px rgba(150,150,150,0.5);
-	background-size: cover;
-			border-radius: 50%;
-		}
-}
-@keyframes spinThat {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-    .container {
-      display: flex;
-      align-items: center;
-    }
-    .current-track__progress {
-  width: 70%;
-  padding: 0 30px;
-  color: #aaaaaa;
-  font-size: 11px;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-progress[value] {
-  --color: green; /* the progress color */
-  --background: lightgrey; /* the background color */
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  width:50%;
-  margin: 0 10px;
-  border-radius: 10em;
-  background: var(--background);
-}
-progress[value]::-webkit-progress-bar {
-  border-radius: 10em;
-  background: var(--background);
-}
-progress[value]::-webkit-progress-value {
-  border-radius: 10em;
-  background: var(--color);
-}
-progress[value]::-moz-progress-bar {
-  border-radius: 10em;
-  background: var(--color);
-}
-  </style>
+    </style>
     <noscript>
     <img src="https://track.core.t2v.city/ingress/1a79feb9-84ad-4121-82cb-cfa9ca0b4801/pixel.gif">
 </noscript>
@@ -184,17 +63,9 @@ progress[value]::-moz-progress-bar {
 </head>
 
 <body class="container">
-  <div>
-    <a href="/"><img style="height:70px;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.ch/img/t2v_logo.webp" alt="logo" /></a>
-    <h1>hi there 👋</h1>
-    <p style="font-size:13px;">✨a guy playing with technology he doesnt understand✨</p>
-    <p>✉ email <strong>me [at] t2v.ch </strong> to contact me</p>
-  <p style="width:100%;display:inline;white-space:nowrap;margin:10px 5px 0 5px;color:white;font-size:13px;">// <span>
-        i run small internet tools and services</span> //</p>
-  </div>
-<div style="font-size: 13px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <p style="display: flex; align-items: center;"><span><img alt="spotify" style="width: 17px; padding-right: 5px;" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/spotify-2-logo-svg-vector.svg"></span> currently listening to...</p>
-    <div id="wrap" style="background-color: #189443; width: 200px; border-radius: 5px; max-height: 250px; border-bottom: 3px solid limegreen; margin-left: 15px; padding-top: 1px;">
+<div class="container_sub">
+    <p class="spot_p"><span><img alt="spotify" class="spot_vector" src="https://cdn.t2v.city/content/KQgCslvqJtiMCkBKQmZp/t2v.city/img/spotify-2-logo-svg-vector.svg"></span> currently listening to...</p>
+    <div id="wrap" class="container_wrap">
           <div id="album">
               <div id="cover">
                   <div id="print"></div>
@@ -203,30 +74,33 @@ progress[value]::-moz-progress-bar {
                   <div id="print"></div>
               </div>
           </div>
-        <div style="display:flex;font-size:13px;align-items:center;justify-content:center;margin:-10px 0 10px 0">
+        <div class="track_container_details">
             <div class="current-track__progress__start" id="time_start">{{ data[8] }}</div>
-                <progress id="progress" class="current-track__progress__bar" max="{{ data[11] }}" value="{{ data[10] }}" style="height:7px"></progress>
+                <progress id="progress" class="current-track__progress__bar" max="{{ data[11] }}" value="{{ data[10] }}" ></progress>
             <div class="current-track__progress__finish">{{ data[9] }}</div>
         </div>
-          <strong><a href="{{ data[4] }}" target="_blank" class="link" style="color:white;font-size:20px;">{{ data[0] }}</a></strong><br>
-            <a href="{{ data[5] }}" target="_blank" class="link" style="color:lightgray;font-size:15px;">{{ data[1] }}</a><br>
-            <a href="{{ data[6] }}" target="_blank" class="link" style="color:black;font-size:10px;">{{ data[2] }}</a>
+          <strong><a href="{{ data[4] }}" target="_blank" class="link data_0">{{ data[0] }}</a></strong><br>
+            <a href="{{ data[5] }}" target="_blank" class="link data_1">{{ data[1] }}</a><br>
+            <a href="{{ data[6] }}" target="_blank" class="link data_2">{{ data[2] }}</a>
       </div>
   </div>
+  <div>
+    <div style="display: inline-flex">
+        <a href="/"><img class="hat" src="/res/imgs/hat.png" alt="logo"/></a>
+        <h1 class="hat_h1">hi there 👋</h1>
+    </div>
+      <hr>
+    <p style="font-size:13px;">✨a guy playing with technology he doesnt understand</p>
+    <p>&#32;✉ email&#32;<strong>me@vee.city</strong>&#32;to contact me</p>
+      <hr>
+    <div>
+      <p style="width:100%;display:inline;white-space:nowrap;margin:10px 5px 0 5px;font-size:13px;text-align:center;">
+          services: <span><a class="link" target="_blank" href="https://archives.vee.city">&#32;<strong>archives</strong>&#32;</a></span> | <span><a class="link" target="_blank" href="https://lab.t2v.city/metrics/">&#32;<strong>lab metrics</strong>&#32;</a></span> | <span><a class="link" target="_blank" href="https://lab.t2v.city/status/">&#32;<strong>status</strong>&#32;</a></span>
+      </p>
+    </div>
+  </div>
+<p class="tag" id="loadtime"><strong>t2v.city</strong>&#32; >>&#32;is now&#32;>> &#32;<strong>vee.city</strong>&#32;||&#32;{{ cached }}  &#32;||&#32;</p>
 </body>
-<script>
-setInterval(increaseProgressBar, 1000);
-function increaseProgressBar() {
-    const progress = document.getElementById("progress");
-    const progress_time_element = document.getElementById("time_start");
-    let currentValue = parseFloat(progress.getAttribute("value")) || 0;
-    let newValue = currentValue + 1000;
-    progress.setAttribute("value", newValue);
-    progress.setAttribute("value", newValue);
-    let minutes = Math.floor(newValue / 60000);
-    let seconds = ((newValue % 60000) / 1000).toFixed(0);
-    let finalTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    progress_time_element.textContent = finalTime;
-}
-</script>
+<script src="/res/scripts/spot.js"></script>
+<script src="/res/scripts/load.js"></script>
 </html>

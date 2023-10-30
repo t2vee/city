@@ -1,11 +1,14 @@
 import os
+import re
 import json
 import spot
+import base64
 import spotipy
 import uvicorn
 import requests
+from functools import lru_cache
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, StreamingResponse, FileResponse
+from fastapi.responses import HTMLResponse, StreamingResponse, FileResponse, PlainTextResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from slowapi import Limiter, _rate_limit_exceeded_handler
@@ -13,10 +16,12 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
+from jinja2htmlcompress import HTMLCompress
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
+templates.env.add_extension(HTMLCompress)
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 app.mount("/res", StaticFiles(directory="res"), name="res")
 app.state.limiter = limiter
@@ -25,43 +30,94 @@ scope = "user-read-currently-playing"
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 results = sp.current_user_playing_track()
+from datetime import datetime, timedelta
+
+cache = {}
+cache_timeout = timedelta(seconds=60)
 
 
 @app.get("/", response_class=HTMLResponse)
-@limiter.limit("40/minute")
+@limiter.limit("3/second")
 async def root(request: Request):
-    spot_response = await spot.get_spotify_track()
-    if spot_response is None:
-        spotify_payload = ['', '', '', False]
+    now = datetime.now()
+    if 'spotify_payload' in cache and now - cache['timestamp'] < cache_timeout:
+        spotify_payload = cache['spotify_payload']
+        caching = False
     else:
-        spot_data = json.loads(json.dumps(spot_response))
+        spot_response = await spot.get_spotify_track()
+        print("reaching spotify api")
+        caching = True
+        if spot_response is None:
+            spotify_payload = ['', '', '', False]
+        else:
+            spot_data = json.loads(json.dumps(spot_response))
 
-        spotify_payload = [spot_data["item"]["name"][:24-3] + "..." if len(spot_data["item"]["name"]) > 24 else spot_data["item"]["name"], spot_data["item"]["album"]["name"][:24-3] + "..." if len(spot_data["item"]["album"]["name"]) > 24 else spot_data["item"]["album"]["name"],
-                           spot_data["item"]["artists"][0]["name"][:24-3] + "..." if len(spot_data["item"]["artists"][0]["name"]) > 24 else spot_data["item"]["artists"][0]["name"],
-                           True, spot_data["item"]["external_urls"]["spotify"],
-                           spot_data["item"]["album"]["external_urls"]["spotify"],
-                           spot_data["item"]["artists"][0]["external_urls"]["spotify"],
-                           spot_data["item"]["album"]["images"][1]["url"],
-                           f"{int(spot_data['progress_ms']/(1000*60)%60)}:{'0' + str(int(spot_data['progress_ms']/1000%60)) if int(spot_data['progress_ms']/1000%60) < 10 else int(spot_data['progress_ms']/1000%60)}",
-                           f"{int(spot_data['item']['duration_ms']/(1000*60)%60)}:{'0' + str(int(spot_data['item']['duration_ms']/1000%60)) if int(spot_data['item']['duration_ms']/1000%60) < 10 else int(spot_data['item']['duration_ms']/1000%60)}",
-                           spot_data['progress_ms'],
-                           spot_data['item']['duration_ms'],
-                           spot_data["is_playing"]]
+            spotify_payload = [spot_data["item"]["name"][:19 - 3] + "..." if len(spot_data["item"]["name"]) > 19 else
+                               spot_data["item"]["name"], spot_data["item"]["album"]["name"][:23 - 3] + "..." if len(
+                spot_data["item"]["album"]["name"]) > 23 else spot_data["item"]["album"]["name"],
+                               spot_data["item"]["artists"][0]["name"][:25 - 3] + "..." if len(
+                                   spot_data["item"]["artists"][0]["name"]) > 25 else spot_data["item"]["artists"][0][
+                                   "name"],
+                               True, spot_data["item"]["external_urls"]["spotify"],
+                               spot_data["item"]["album"]["external_urls"]["spotify"],
+                               spot_data["item"]["artists"][0]["external_urls"]["spotify"],
+                               base64.urlsafe_b64encode(
+                                   f'{spot_data["item"]["album"]["images"][1]["url"]}'.encode()).decode(),
+                               f"{int(spot_data['progress_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['progress_ms'] / 1000 % 60)) if int(spot_data['progress_ms'] / 1000 % 60) < 10 else int(spot_data['progress_ms'] / 1000 % 60)}",
+                               f"{int(spot_data['item']['duration_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['item']['duration_ms'] / 1000 % 60)) if int(spot_data['item']['duration_ms'] / 1000 % 60) < 10 else int(spot_data['item']['duration_ms'] / 1000 % 60)}",
+                               spot_data['progress_ms'],
+                               spot_data['item']['duration_ms'],
+                               spot_data["is_playing"]]
 
-    return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload}, )
+            cache['spotify_payload'] = spotify_payload
+            cache['timestamp'] = now
+
+    return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload, "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
 
 
-#@app.get("/stats")
-#@limiter.limit("60/minute")
-#async def space(request: Request):
-#    return templates.TemplateResponse("stats.html", {"request": request})
-
-
-@app.get("/spotify_thumbnail_relay")
-@limiter.limit("60/minute")
-def proxy(request: Request, uri: str):
-    response = requests.get(uri, stream=True)
+@app.get("/thumbnail/{base64_str}")
+@limiter.limit("3/second")
+def proxy(request: Request, base64_str: str):
+    response = requests.get(base64.urlsafe_b64decode(base64_str.encode()).decode(), stream=True)
     return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
+
+## EXPERIMENTAL
+def minify_css(content: str) -> str:
+    content = re.sub(r'\s+', ' ', content)
+    content = re.sub(r'/\*.*?\*/', '', content)
+    content = re.sub(r' ;', ';', content)
+    content = re.sub(r'; ', ';', content)
+    content = re.sub(r' {', '{', content)
+    content = re.sub(r'{ ', '{', content)
+    content = re.sub(r' }', '}', content)
+    content = re.sub(r'} ', '}', content)
+    return content.strip()
+
+
+@lru_cache(maxsize=32)
+def read_and_minify_css(css_file_name: str, minify: bool) -> str:
+    css_path = f"./res/style/{css_file_name}"
+    if minify:
+        if not os.path.exists(css_path):
+            return None
+
+        with open(css_path, "r") as f:
+            raw_css = f.read()
+
+        return minify_css(raw_css)
+    else:
+        with open(css_path, "r") as f:
+            raw_css = f.read()
+        return raw_css
+
+
+@app.get("/css/{css_file_name}", response_class=PlainTextResponse)
+@limiter.limit("3/second")
+async def get_css(request: Request, css_file_name: str, minify: bool = False):
+    css = read_and_minify_css(css_file_name, minify)
+    if css is None:
+        return Response("CSS file not found.", media_type="text/plain", status_code=404)
+    return Response(css, media_type="text/css")
 
 
 @app.exception_handler(404)
