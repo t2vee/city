@@ -14,22 +14,94 @@
     color: white;
     font-family: Asap;
   }
-  .link {
-    color: rgb(128, 128, 128);
-    text-decoration: none;
+.link {
+  color: rgb(128, 128, 128);
+  text-decoration: none;
+}
+    .link:hover {
+      color: white;
+      text-decoration: underline;
+    }
+#wrap {
+  background-color: black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
   }
-      .link:hover {
-        color: white;
-        text-decoration: underline;
-      }
-  #wrap {
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+#albumtab {
+  clip-path: polygon(10% 0%, 0% 100%, 90% 100%, 100% 0%);
+
+  position: absolute;
+
+  left: 0;
+  z-index: 1000;
+  background-color: limegreen;
+  color: black;
+  width: 8em;
+
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: bottom left;
+  border-top-right-radius: 4px;
+  margin: 52% 0;
+  transition: left 0.5s ease;
+}
+#songtab {
+  clip-path: polygon(10% 0%, 0% 100%, 90% 100%, 100% 0%);
+
+  position: absolute;
+
+  left: 0;
+  z-index: 1000;
+  background-color: limegreen;
+  color: black;
+  width: 8em;
+
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: bottom left;
+  border-top-right-radius: 4px;
+  margin: 0 0;
+  transition: left 0.5s ease;
+}
+* {
+  scrollbar-color: #8fff70 green;
+  scrollbar-width: thin;
+}
+#slideout {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #21b721;
+  color: black;
+  overflow: auto;
+  transition: left 0.5s ease;
+  z-index: -1;
+  border-radius: 5px 0 0 5px;
 }
 
+.sl {
+  border: 0;
+  border-top: 2px solid darkgreen;
+}
+
+.slideout-active #slideout {
+  left: -100%;
+}
+.slideout-active #albumtab {
+    left: -100%;
+}
+.slideout-active #songtab {
+    left: -100%;
+}
 #album {
     position: relative;
     height: 100%;
@@ -102,8 +174,8 @@
 }
 
 progress[value] {
-  --color: green; /* the progress color */
-  --background: lightgrey; /* the background color */
+  --color: green;
+  --background: lightgrey;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -173,4 +245,19 @@ progress[value]::-moz-progress-bar {
 }
 .hat_h1 {
     vertical-align: middle;
+}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  display: none;
+  margin: 80px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
