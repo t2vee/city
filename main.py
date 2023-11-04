@@ -6,6 +6,7 @@ import base64
 import spotipy
 import uvicorn
 import requests
+from rjsmin import jsmin
 from functools import lru_cache
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse, FileResponse, PlainTextResponse, Response
@@ -74,7 +75,8 @@ async def root(request: Request):
             cache['spotify_payload'] = spotify_payload
             cache['timestamp'] = now
 
-    return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload, "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
+    return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload,
+                                                     "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
 
 
 def clean_spotify_stat_payload_track(data):
@@ -164,11 +166,33 @@ def read_and_minify_css(css_file_name: str, minify: bool) -> str:
 
 @app.get("/css/{css_file_name}", response_class=PlainTextResponse)
 @limiter.limit("3/second")
-async def get_css(request: Request, css_file_name: str, minify: bool = False):
-    css = read_and_minify_css(css_file_name, minify)
+async def get_css(request: Request, css_file_name: str, Minify: bool = False):
+    css = read_and_minify_css(css_file_name, Minify)
     if css is None:
         return Response("CSS file not found.", media_type="text/plain", status_code=404)
     return Response(css, media_type="text/css")
+
+
+@app.get("/js/{js_file_name}", response_class=PlainTextResponse)
+@limiter.limit("3/second")
+async def get_js(request: Request, js_file_name: str, Minify: bool = False):
+    js = read_and_minify_js(js_file_name, Minify)
+    if js is None:
+        return Response("JavaScript file not found.", media_type="text/plain", status_code=404)
+    return Response(js, media_type="application/javascript")
+
+
+@lru_cache(maxsize=32)
+def read_and_minify_js(js_file_name: str, minify: bool) -> str:
+    js_path = f"./res/scripts/{js_file_name}"
+    if not os.path.exists(js_path):
+        return None
+
+    with open(js_path, "r", encoding='utf-8') as f:
+        raw_js = f.read()
+
+    return jsmin(raw_js) if minify else raw_js
+
 
 
 @app.exception_handler(404)
@@ -178,7 +202,7 @@ async def custom_404_handler(request, __):
 
 @app.get('/favicon.ico', include_in_schema=False)
 async def favicon():
-    return FileResponse("res/imgs/favicon.ico")
+    return FileResponse("res/imgs/optimized/favicon.webp")
 
 
 if __name__ == "__main__":
