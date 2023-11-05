@@ -1,3 +1,24 @@
+function colour(num) {
+  if (num < 500) {
+    return 'limegreen';
+  } else if (num < 1000) {
+    return 'orange';
+  } else {
+    return 'red';
+  }
+}
+
+window.addEventListener('load', (event) => {
+  const navigationTiming = performance.getEntriesByType('navigation')[0];
+  const pageLoadTime = Math.round(navigationTiming.domComplete - navigationTiming.startTime);
+  if (pageLoadTime >= 0) {
+
+    document.getElementById("loadtime").innerHTML += ` Page Load Time: <span style="color: ${colour(pageLoadTime)}">${pageLoadTime}ms</span>`;
+  } else {
+    document.getElementById("loadtime").innerHTML += 'Page: Timing data not available';
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
   const songtab = document.getElementById("songtab");
   const albumtab = document.getElementById("albumtab");
@@ -134,3 +155,16 @@ songtab.addEventListener("click", function() {
     fetchSongData();
   }
 });
+setInterval(increaseProgressBar, 1000);
+function increaseProgressBar() {
+    const progress = document.getElementById("progress");
+    const progress_time_element = document.getElementById("time_start");
+    let currentValue = parseFloat(progress.getAttribute("value")) || 0;
+    let newValue = currentValue + 1000;
+    progress.setAttribute("value", newValue);
+    progress.setAttribute("value", newValue);
+    let minutes = Math.floor(newValue / 60000);
+    let seconds = ((newValue % 60000) / 1000).toFixed(0);
+    let finalTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    progress_time_element.textContent = finalTime;
+}

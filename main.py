@@ -164,7 +164,7 @@ def read_and_minify_css(css_file_name: str, minify: bool) -> str:
         return raw_css
 
 
-@app.get("/css/{css_file_name}", response_class=PlainTextResponse)
+@app.get("/Styles/{css_file_name}", response_class=PlainTextResponse)
 @limiter.limit("3/second")
 async def get_css(request: Request, css_file_name: str, Minify: bool = False):
     css = read_and_minify_css(css_file_name, Minify)
@@ -173,7 +173,7 @@ async def get_css(request: Request, css_file_name: str, Minify: bool = False):
     return Response(css, media_type="text/css")
 
 
-@app.get("/js/{js_file_name}", response_class=PlainTextResponse)
+@app.get("/JavaScript/{js_file_name}", response_class=PlainTextResponse)
 @limiter.limit("3/second")
 async def get_js(request: Request, js_file_name: str, Minify: bool = False):
     js = read_and_minify_js(js_file_name, Minify)
