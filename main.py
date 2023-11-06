@@ -51,7 +51,7 @@ async def root(request: Request):
         print("reaching spotify api")
         caching = True
         if spot_response is None:
-            spotify_payload = ['', '', '', False]
+            spotify_payload = ['', '', 'none', None]
         else:
             spot_data = json.loads(json.dumps(spot_response))
 
@@ -75,6 +75,7 @@ async def root(request: Request):
             cache['spotify_payload'] = spotify_payload
             cache['timestamp'] = now
 
+    print(spotify_payload[3])
     return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload,
                                                      "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
 

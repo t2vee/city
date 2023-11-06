@@ -199,8 +199,9 @@ progress[value]::-moz-progress-bar {
   background: var(--color);
 }
 .tag {
+    display: inline-flex;
       position: fixed;
-      bottom: 0;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
@@ -256,8 +257,63 @@ progress[value]::-moz-progress-bar {
   display: none;
   margin: 80px;
 }
+.cacheLoader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid orange;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 1s linear infinite;
+  margin: 0 10px 0 10px;
+}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  max-width: 150px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip .tooltiptext:hover {
+  visibility: visible;
+  opacity: 1;
+}
+@media only screen and (max-width: 768px) {
+  p {
+    font-size: 16px;
+  }
 }

@@ -9,11 +9,7 @@
   <link rel="stylesheet" href="/Styles/Core.css?Minify=true&Cache=true">
     <!--<link rel="stylesheet" href="/res/style/Core.css">-->
   <style>
-@media only screen and (max-width: 768px) {
-  p {
-    font-size: 16px;
-  }
-}
+
 #cover {
 	position: absolute;
 	top: 0;
@@ -60,10 +56,10 @@
 </head>
 
 <body class="container">
-<div class="container_sub">
+<div class="container_sub" style="display:{{ data[2] if not data[3] }};">
     <p class="spot_p"><span><svg class="spot_vector" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2931 2931"><style>.st0{fill:#2ebd59}</style><path class="st0" d="M1465.5 0C656.1 0 0 656.1 0 1465.5S656.1 2931 1465.5 2931 2931 2274.9 2931 1465.5C2931 656.2 2274.9.1 1465.5 0zm672.1 2113.6c-26.3 43.2-82.6 56.7-125.6 30.4-344.1-210.3-777.3-257.8-1287.4-141.3-49.2 11.3-98.2-19.5-109.4-68.7-11.3-49.2 19.4-98.2 68.7-109.4C1242.1 1697.1 1721 1752 2107.3 1988c43 26.5 56.7 82.6 30.3 125.6zm179.3-398.9c-33.1 53.8-103.5 70.6-157.2 37.6-393.8-242.1-994.4-312.2-1460.3-170.8-60.4 18.3-124.2-15.8-142.6-76.1-18.2-60.4 15.9-124.1 76.2-142.5 532.2-161.5 1193.9-83.3 1646.2 194.7 53.8 33.1 70.8 103.4 37.7 157.1zm15.4-415.6c-472.4-280.5-1251.6-306.3-1702.6-169.5-72.4 22-149-18.9-170.9-91.3-21.9-72.4 18.9-149 91.4-171 517.7-157.1 1378.2-126.8 1922 196 65.1 38.7 86.5 122.8 47.9 187.8-38.5 65.2-122.8 86.7-187.8 48z"/></svg>
 </span> currently listening to...</p>
-    <div id="wrap" class="container_wrap">
+    <div id="wrap" class="container_wrap" >
         <div id="songtab" data-url="{{ data[4] }}">Song Stats</div>
         <div id="albumtab">Album Info</div>
         <div id="slideout">
@@ -72,7 +68,7 @@
             </div>
             <div id="albumcontent">
                 <br><h1>Sorry!</h1>
-                <p>This page is under construction🔧</p>
+                <p>This page isn't ready yet🔧</p>
             </div>
         </div>
           <div id="album">
@@ -103,72 +99,41 @@
     <p>&#32;✉ email&#32;<strong>me@vee.city</strong>&#32;to contact me</p>
       <hr>
     <div>
-        <style>
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-  background-color: white;
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  max-width: 150px;
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: white transparent transparent transparent;
-}
-
-.tooltip:hover .tooltiptext,
-.tooltip .tooltiptext:hover {
-  visibility: visible;
-  opacity: 1;
-}
-</style>
       <p style="width:100%;display:inline;white-space:nowrap;margin:10px 5px 0 5px;font-size:13px;text-align:center;">
-            services:
-            <span><a class="link" target="_blank" href="https://archives.vee.city">&#32;<strong>archives</strong>&#32;</a>
+            services:&#32;
             <span class="tooltip">
-                <img src="/res/help.svg">
+                <span><a class="link" target="_blank" href="https://archives.vee.city"><strong>archives</strong></a>
                 <span class="tooltiptext">A collection of archival/mirrored data. including mcmods, wikis and clubpenguin data</span>
             </span>
-            </span> |
-            <span><a class="link" target="_blank" href="https://lab.t2v.city/metrics/">&#32;<strong>lab metrics</strong>&#32;</a>
+            </span>&#32;|&#32;
+
             <span class="tooltip">
-                <img src="/res/help.svg">
-                <span class="tooltiptext" style="width: 150px;">Grafana Dashboard for the Proxmox metrics of my lab. Running influxDB in the stack</span>
+                <span><a class="link" target="_blank" href="https://lab.t2v.city/metrics/"><strong>lab metrics</strong></a>
+                <span class="tooltiptext" style="width: 100px;">Grafana Dashboard for the Proxmox metrics of my lab</span>
             </span>
-            </span> |
-            <span><a class="link" target="_blank" href="https://lab.t2v.city/log.txt/">&#32;<strong>log.txt</strong>&#32;</a></span>
+            </span>&#32;|&#32;
             <span class="tooltip">
-                <img src="/res/help.svg">
-                <span class="tooltiptext">My Homelab Changelog. Running on&#32;<span><a target="_blank" href="https://github.com/t2vee/lablog.txt">t2vee/lablog.txt</a></span></span>
+                <span><a class="link" target="_blank" href="https://lab.t2v.city/log.txt/"><strong>log.txt</strong></a></span>
+                <span class="tooltiptext">My Homelab Changelog. Running on<span><a target="_blank" href="https://github.com/t2vee/lablog.txt">t2vee/lablog.txt</a></span></span>
             </span>
         </p>
     </div>
   </div>
-<p class="tag" id="loadtime"><strong>t2v.city</strong>&#32; >>&#32;is now&#32;>> &#32;<strong>vee.city</strong>&#32;||&#32;<span style="color:{{ "green" if cached == "Page Cached" else "yellow"}};">{{ cached }}</span>  &#32;||&#32;</p>
+<div class="tag" id="loadtime">
+  <strong>t2v.city&#32; </strong> &#32;>>&#32;is now&#32;>><strong>&#32;vee.city&#32;</strong>
+  <span style="margin: 0 0 0 5px">||</span>
+  <div style="display: inline-flex">
+    <div id="cacheSpinner" class="cacheLoader" style="display: {{ "none" if cached == 'Page Cached' else "block"}};"></div>
+    <svg id="cacheTick" style="display: {{ "block" if cached == 'Page Cached' else "none"}};" width="20" height="20" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <path fill="none" stroke="green" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M14,27 l8,8 l16,-16"/>
+    </svg>
+    <span id="cacheStatus" style="color: {% if cached == 'Page Cached' %}green{% else %}yellow{% endif %};">
+      {{ cached }}
+    </span>
+  </div>
+    <span style="margin: 0 5px 0 5px">||</span>
+</div>
 <noscript>
     <img src="https://web.metrics.t2v.city/ingress/ccb04fc2-8c95-4856-bf69-ccb6b5d8610b/pixel.gif">
 </noscript>

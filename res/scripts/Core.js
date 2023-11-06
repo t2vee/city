@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+  setTimeout(function() {
+    document.getElementById('cacheStatus').textContent = ' Page Cached';
+    document.getElementById('cacheStatus').style.color = 'green';
+    var spinner = document.getElementById('cacheSpinner');
+    if (spinner) {
+      spinner.style.display = 'none';
+      document.getElementById('cacheTick').style.display = 'block';
+    }
+  }, 3000);
+});
 function colour(num) {
   if (num < 500) {
     return 'limegreen';
@@ -13,7 +24,7 @@ window.addEventListener('load', (event) => {
   const pageLoadTime = Math.round(navigationTiming.domComplete - navigationTiming.startTime);
   if (pageLoadTime >= 0) {
 
-    document.getElementById("loadtime").innerHTML += ` Page Load Time: <span style="color: ${colour(pageLoadTime)}">${pageLoadTime}ms</span>`;
+    document.getElementById("loadtime").innerHTML += ` Page Load Time:&#32;<span style="margin-left: 5px;color: ${colour(pageLoadTime)}"> ${pageLoadTime}ms</span>`;
   } else {
     document.getElementById("loadtime").innerHTML += 'Page: Timing data not available';
   }
