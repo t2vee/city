@@ -200,6 +200,11 @@ def read_and_minify_js(js_file_name: str, minify: bool) -> str:
     return jsmin(raw_js) if minify else raw_js
 
 
+@app.get("/up")
+def up():
+    return Response("A-OK", status_code=200)
+
+
 
 @app.exception_handler(404)
 async def custom_404_handler(request, __):
