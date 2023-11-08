@@ -6,6 +6,7 @@ import base64
 import spotipy
 import uvicorn
 import requests
+import sentry_sdk
 from rjsmin import jsmin
 from functools import lru_cache
 from fastapi import FastAPI, Request
@@ -28,6 +29,10 @@ app.mount("/res", StaticFiles(directory="res"), name="res")
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 scope = "user-read-currently-playing"
+sentry_sdk.init(
+    dsn=f"{os.environ.get('SENTRY_DSN')}",
+    enable_tracing=True,
+)
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 results = sp.current_user_playing_track()
