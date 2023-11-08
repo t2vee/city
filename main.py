@@ -206,7 +206,6 @@ def up(request: Request):
     return Response("A-OK", status_code=200)
 
 
-
 @app.exception_handler(404)
 async def custom_404_handler(request, __):
     return templates.TemplateResponse("404.html", {"request": request})
@@ -215,6 +214,11 @@ async def custom_404_handler(request, __):
 @app.get('/favicon.ico', include_in_schema=False)
 async def favicon():
     return FileResponse("res/imgs/optimized/favicon.webp")
+
+
+@app.get('/robots.txt', include_in_schema=False)
+async def favicon():
+    return FileResponse("robots.txt")
 
 
 if __name__ == "__main__":
