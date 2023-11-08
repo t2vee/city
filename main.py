@@ -45,7 +45,7 @@ stats_cache = {}
 
 
 @app.get("/", response_class=HTMLResponse)
-@limiter.limit("3/second")
+@limiter.limit("1/second")
 async def root(request: Request):
     now = datetime.now()
     if 'spotify_payload' in cache and now - cache['timestamp'] < cache_timeout:
@@ -134,7 +134,7 @@ def spotify_stats_relay(request: Request, track_id: str):
 
 
 @app.get("/thumbnail/{base64_str}")
-@limiter.limit("3/second")
+@limiter.limit("1/second")
 def proxy(request: Request, base64_str: str):
     response = requests.get(base64.urlsafe_b64decode(base64_str.encode()).decode(), stream=True)
     return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
@@ -171,7 +171,7 @@ def read_and_minify_css(css_file_name: str, minify: bool) -> str:
 
 
 @app.get("/Styles/{css_file_name}", response_class=PlainTextResponse)
-@limiter.limit("3/second")
+@limiter.limit("1/second")
 async def get_css(request: Request, css_file_name: str, Minify: bool = False):
     css = read_and_minify_css(css_file_name, Minify)
     if css is None:
@@ -180,7 +180,7 @@ async def get_css(request: Request, css_file_name: str, Minify: bool = False):
 
 
 @app.get("/JavaScript/{js_file_name}", response_class=PlainTextResponse)
-@limiter.limit("3/second")
+@limiter.limit("1/second")
 async def get_js(request: Request, js_file_name: str, Minify: bool = False):
     js = read_and_minify_js(js_file_name, Minify)
     if js is None:
