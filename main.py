@@ -201,6 +201,7 @@ def read_and_minify_js(js_file_name: str, minify: bool) -> str:
 
 
 @app.get("/up")
+@limiter.limit("1/second")
 def up():
     return Response("A-OK", status_code=200)
 
