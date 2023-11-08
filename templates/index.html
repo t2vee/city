@@ -139,5 +139,12 @@
 </noscript>
 <script defer src="https://web.metrics.t2v.city/ingress/ccb04fc2-8c95-4856-bf69-ccb6b5d8610b/script.js"></script>
 <script src="/JavaScript/Core.js?Minify=true" type="text/javascript"></script>
+<script src="https://browser.sentry-cdn.com/7.60.0/bundle.min.js" crossorigin="anonymous"></script>
+<script>
+    Sentry.init({
+      dsn: "https://972b15d7382e4b79b664fe109d72d383@bugs.metrics.t2v.city/2",
+      tracesSampleRate: 0.01,
+    });
+</script>
 </body>
 </html>
