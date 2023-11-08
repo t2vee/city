@@ -1,2 +1,2 @@
 user-agent: *
-disallow /gateway/SpotifyStatsRelay/Track
+disallow https://t2v.city/gateway/SpotifyStatsRelay/Track
