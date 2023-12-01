@@ -242,7 +242,12 @@ progress[value]::-moz-progress-bar {
     color: #0eff91;font-size:10px;
 }
 .hat {
-    height:70px;transform: rotate(-30deg);padding-right:20px;vertical-align: middle;
+  position: absolute;
+  transform: rotate(-20deg);
+  padding-right:20px;
+  vertical-align: middle;
+  z-index: -999 !important;
+  opacity: 0.1;
 }
 .hat_h1 {
     vertical-align: middle;
