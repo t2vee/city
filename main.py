@@ -126,7 +126,7 @@ def clean_spotify_stat_payload_track(data):
 @limiter.limit("1/second")
 def spotify_stats_relay(request: Request, track_id: str):
     print("reaching spotify stats api")
-    request_url = f"https://spotify.api.apps.t2v.city/track/{track_id}/stats?token={os.getenv('SPOTIFY_API_GUEST_TOKEN')}"
+    request_url = f"https://api.urspoti.fi/track/{track_id}/stats?token={os.getenv('SPOTIFY_API_GUEST_TOKEN')}"
     response = requests.get(request_url)
     payload = response.json() if response.status_code == 200 else None
     cleaned_payload = clean_spotify_stat_payload_track(payload)
