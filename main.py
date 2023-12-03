@@ -135,14 +135,7 @@ def spotify_stats_relay(request: Request, track_id: str):
 @app.get("/gateway/SpotifyImageRelay/{spotify_id}.jpeg")
 @limiter.limit("60/second")
 def proxy(request: Request, spotify_id: str):
-    local_image_path = os.path.join('cache', f"{spotify_id}.jpeg")
-    if os.path.exists(local_image_path):
-        return FileResponse(local_image_path)
     response = requests.get(f'https://i.scdn.co/image/{spotify_id}', stream=True)
-    print('requested spotifys cdn')
-    with open(local_image_path, 'wb') as file:
-        for chunk in response.iter_content(chunk_size=1024):
-            file.write(chunk)
     return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
 
 
