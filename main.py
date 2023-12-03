@@ -140,6 +140,13 @@ def proxy(request: Request, base64_str: str):
     return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
 
 
+@app.get("/spotify_thumbnail/{spotify_id}.jpeg")
+@limiter.limit("5/second")
+def proxy(request: Request, spotify_id: str):
+    response = requests.get(f'https://i.scdn.co/image/{spotify_id}', stream=True)
+    return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
+
+
 ## EXPERIMENTAL
 def minify_css(content: str) -> str:
     content = re.sub(r'\s+', ' ', content)
