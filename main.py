@@ -69,8 +69,7 @@ async def root(request: Request):
                                True, spot_data["item"]["external_urls"]["spotify"],
                                spot_data["item"]["album"]["external_urls"]["spotify"],
                                spot_data["item"]["artists"][0]["external_urls"]["spotify"],
-                               base64.urlsafe_b64encode(
-                                   f'{spot_data["item"]["album"]["images"][1]["url"]}'.encode()).decode(),
+                               f'{spot_data["item"]["album"]["images"][1]["url"]}'.replace("https://i.scdn.co/image/", ''),
                                f"{int(spot_data['progress_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['progress_ms'] / 1000 % 60)) if int(spot_data['progress_ms'] / 1000 % 60) < 10 else int(spot_data['progress_ms'] / 1000 % 60)}",
                                f"{int(spot_data['item']['duration_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['item']['duration_ms'] / 1000 % 60)) if int(spot_data['item']['duration_ms'] / 1000 % 60) < 10 else int(spot_data['item']['duration_ms'] / 1000 % 60)}",
                                spot_data['progress_ms'],
@@ -133,18 +132,18 @@ def spotify_stats_relay(request: Request, track_id: str):
     return cleaned_payload
 
 
-@app.get("/thumbnail/{base64_str}")
-@limiter.limit("1/second")
-def proxy(request: Request, base64_str: str):
-    response = requests.get(base64.urlsafe_b64decode(base64_str.encode()).decode(), stream=True)
-    return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
-
-
-@app.get("/spotify_thumbnail/{spotify_id}.jpeg")
-@limiter.limit("5/second")
+@app.get("/gateway/SpotifyImageRelay/{spotify_id}.jpeg")
+@limiter.limit("60/second")
 def proxy(request: Request, spotify_id: str):
+    local_image_path = os.path.join('cache', f"{spotify_id}.jpeg")
+    if os.path.exists(local_image_path):
+        return FileResponse(local_image_path)
     response = requests.get(f'https://i.scdn.co/image/{spotify_id}', stream=True)
-    return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
+    print('requested spotifys cdn')
+    with open(local_image_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=1024):
+            file.write(chunk)
+    return StreamingResponse(iter(lambda: response.raw.read(1024), b''), media_type=response.headers["content-type"])
 
 
 ## EXPERIMENTAL
