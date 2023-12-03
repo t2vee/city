@@ -143,7 +143,7 @@ def proxy(request: Request, spotify_id: str):
     with open(local_image_path, 'wb') as file:
         for chunk in response.iter_content(chunk_size=1024):
             file.write(chunk)
-    return StreamingResponse(iter(lambda: response.raw.read(1024), b''), media_type=response.headers["content-type"])
+    return StreamingResponse(response.iter_content(chunk_size=1024), media_type=response.headers["content-type"])
 
 
 ## EXPERIMENTAL
