@@ -199,12 +199,6 @@ def read_and_minify_js(js_file_name: str, minify: bool) -> str:
     return jsmin(raw_js) if minify else raw_js
 
 
-@app.get("/500")
-@limiter.limit("1/second")
-def server_error(request: Request):
-    return 1 / 0
-
-
 @app.get("/up")
 @limiter.limit("1/second")
 def up(request: Request):
