@@ -207,12 +207,12 @@ def up(request: Request):
 
 @app.exception_handler(404)
 async def custom_404_handler(request, __):
-    return templates.TemplateResponse("404.html", {"request": request})
+    return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
 
 
 @app.exception_handler(500)
 async def custom_404_handler(request, __):
-    return templates.TemplateResponse("500.html", {"request": request})
+    return templates.TemplateResponse("500.html", {"request": request}, status_code=500)
 
 
 @app.get('/favicon.ico', include_in_schema=False)
