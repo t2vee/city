@@ -156,7 +156,11 @@ function fetchSongData() {
       songDataLoaded = true;
     })
     .catch(error => {
-      console.error('There was a problem with the fetch:', error);
+      document.getElementById("spinner").style.display = "none";
+      let songContent = document.getElementById("songcontent");
+      songContent.innerHTML = `<h1>Oops!</h1>`;
+      songContent.innerHTML += `<hr class="sl">`
+      songContent.innerHTML += `<h3>Sorry! Stats for this song are currently unavailable 😞</h3>`;
     });
 }
 

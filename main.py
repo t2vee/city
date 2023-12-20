@@ -25,7 +25,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 templates.env.add_extension(HTMLCompress)
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
-app.mount("/res", StaticFiles(directory="res"), name="res")
+app.mount("/Dist", StaticFiles(directory="dist"), name="dist")
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 scope = "user-read-currently-playing"
@@ -42,6 +42,11 @@ cache = {}
 cache_timeout = timedelta(seconds=60)
 stats_cache_timeout = timedelta(days=30)
 stats_cache = {}
+
+
+@app.on_event("startup")
+async def startup_event():
+    prepare_static_files()
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -78,47 +83,9 @@ async def root(request: Request):
 
             cache['spotify_payload'] = spotify_payload
             cache['timestamp'] = now
-
-    print(spotify_payload[3])
+    print(spotify_payload)
     return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload,
                                                      "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
-
-
-def clean_spotify_stat_payload_track(data):
-    simplified_data = {}
-
-    # Extracting relevant data from 'track'
-    track = data.get("track", {})
-    simplified_data["track_id"] = track.get("_id")
-    simplified_data["track_name"] = track.get("name")
-    simplified_data["track_album_id"] = track.get("album")
-    simplified_data["track_artists"] = track.get("artists")
-    simplified_data["track_popularity"] = track.get("popularity")
-
-    # Extracting relevant data from 'artist'
-    artist = data.get("artist", {})
-    simplified_data["artist_id"] = artist.get("_id")
-    simplified_data["artist_name"] = artist.get("name")
-    simplified_data["artist_genres"] = artist.get("genres")
-
-    # Extracting relevant data from 'album'
-    album = data.get("album", {})
-    simplified_data["album_id"] = album.get("_id")
-    simplified_data["album_name"] = album.get("name")
-    simplified_data["album_popularity"] = album.get("popularity")
-    best_period = data.get("bestPeriod", {})
-    simplified_data["best_period"] = best_period
-
-    # Extracting relevant data from 'firstLast'
-    first_last = data.get("firstLast", {})
-    simplified_data["first_played"] = first_last.get("first", {}).get("played_at")
-    simplified_data["last_played"] = first_last.get("last", {}).get("played_at")
-
-    # Extracting relevant data from 'total'
-    total = data.get("total", {})
-    simplified_data["total_count"] = total.get("count")
-
-    return json.dumps(simplified_data)
 
 
 @app.get("/gateway/SpotifyStatsRelay/Track")
@@ -126,9 +93,15 @@ def clean_spotify_stat_payload_track(data):
 def spotify_stats_relay(request: Request, track_id: str):
     print("reaching spotify stats api")
     request_url = f"https://api.urspoti.fi/track/{track_id}/stats?token={os.getenv('SPOTIFY_API_GUEST_TOKEN')}"
-    response = requests.get(request_url)
+    try:
+        response = requests.get(request_url)
+    except Exception as e:
+        return PlainTextResponse(f"Cant Reach Statistics API", status_code=503)
     payload = response.json() if response.status_code == 200 else None
-    cleaned_payload = clean_spotify_stat_payload_track(payload)
+    try:
+        cleaned_payload = clean_spotify_stat_payload_track(payload)
+    except Exception as e:
+        return PlainTextResponse(f"Stats For Selected Song Are Unavailable At This Time", status_code=418)
     return cleaned_payload
 
 
@@ -140,6 +113,32 @@ def proxy(request: Request, spotify_id: str):
 
 
 ## EXPERIMENTAL
+def clean_spotify_stat_payload_track(data):
+    simplified_data = {}
+    track = data.get("track", {})
+    simplified_data["track_id"] = track.get("_id")
+    simplified_data["track_name"] = track.get("name")
+    simplified_data["track_album_id"] = track.get("album")
+    simplified_data["track_artists"] = track.get("artists")
+    simplified_data["track_popularity"] = track.get("popularity")
+    artist = data.get("artist", {})
+    simplified_data["artist_id"] = artist.get("_id")
+    simplified_data["artist_name"] = artist.get("name")
+    simplified_data["artist_genres"] = artist.get("genres")
+    album = data.get("album", {})
+    simplified_data["album_id"] = album.get("_id")
+    simplified_data["album_name"] = album.get("name")
+    simplified_data["album_popularity"] = album.get("popularity")
+    best_period = data.get("bestPeriod", {})
+    simplified_data["best_period"] = best_period
+    first_last = data.get("firstLast", {})
+    simplified_data["first_played"] = first_last.get("first", {}).get("played_at")
+    simplified_data["last_played"] = first_last.get("last", {}).get("played_at")
+    total = data.get("total", {})
+    simplified_data["total_count"] = total.get("count")
+    return json.dumps(simplified_data)
+
+
 def minify_css(content: str) -> str:
     content = re.sub(r'\s+', ' ', content)
     content = re.sub(r'/\*.*?\*/', '', content)
@@ -158,10 +157,8 @@ def read_and_minify_css(css_file_name: str, minify: bool) -> str:
     if minify:
         if not os.path.exists(css_path):
             return None
-
         with open(css_path, "r") as f:
             raw_css = f.read()
-
         return minify_css(raw_css)
     else:
         with open(css_path, "r") as f:
@@ -169,34 +166,39 @@ def read_and_minify_css(css_file_name: str, minify: bool) -> str:
         return raw_css
 
 
-@app.get("/Styles/{css_file_name}", response_class=PlainTextResponse)
-@limiter.limit("1/second")
-async def get_css(request: Request, css_file_name: str, Minify: bool = False):
-    css = read_and_minify_css(css_file_name, Minify)
-    if css is None:
-        return Response("CSS file not found.", media_type="text/plain", status_code=404)
-    return Response(css, media_type="text/css")
-
-
-@app.get("/JavaScript/{js_file_name}", response_class=PlainTextResponse)
-@limiter.limit("1/second")
-async def get_js(request: Request, js_file_name: str, Minify: bool = False):
-    js = read_and_minify_js(js_file_name, Minify)
-    if js is None:
-        return Response("JavaScript file not found.", media_type="text/plain", status_code=404)
-    return Response(js, media_type="application/javascript")
-
-
 @lru_cache(maxsize=32)
 def read_and_minify_js(js_file_name: str, minify: bool) -> str:
     js_path = f"./res/scripts/{js_file_name}"
     if not os.path.exists(js_path):
         return None
-
     with open(js_path, "r", encoding='utf-8') as f:
         raw_js = f.read()
-
     return jsmin(raw_js) if minify else raw_js
+
+
+def prepare_static_files(minify=True):
+    print("Preparing static files...")
+    css_source_dir = './res/style'
+    js_source_dir = './res/scripts'
+    dist_dir = './dist'
+    if not os.path.exists(dist_dir):
+        os.makedirs(dist_dir)
+    for css_file in os.listdir(css_source_dir):
+        if css_file.endswith('.css'):
+            minified_content = read_and_minify_css(css_file, minify)
+            if minified_content:
+                base_name, ext = os.path.splitext(css_file)
+                new_filename = f"{base_name}.Min{ext}"
+                with open(os.path.join(dist_dir, new_filename), 'w') as f:
+                    f.write(minified_content)
+    for js_file in os.listdir(js_source_dir):
+        if js_file.endswith('.js'):
+            minified_content = read_and_minify_js(js_file, minify)
+            if minified_content:
+                base_name, ext = os.path.splitext(js_file)
+                new_filename = f"{base_name}.Min{ext}"
+                with open(os.path.join(dist_dir, new_filename), 'w', encoding='utf-8') as f:
+                    f.write(minified_content)
 
 
 @app.get("/up")
