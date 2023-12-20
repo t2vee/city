@@ -163,17 +163,26 @@ function fetchSongData() {
       songContent.innerHTML += `<h3>Sorry! Stats for this song are currently unavailable 😞</h3>`;
     });
 }
-
+function convertTimeToMilliseconds(time) {
+    const [minutes, seconds] = time.split(":").map(Number);
+    return (minutes * 60000) + (seconds * 1000);
+}
 songtab.addEventListener("click", function() {
-  // ... existing code
   if (!songDataLoaded) {
     fetchSongData();
   }
 });
 setInterval(increaseProgressBar, 1000);
 function increaseProgressBar() {
+    let totalDuration = convertTimeToMilliseconds(songDuration.getAttribute("data-duration"));
+    if (newValue >= totalDuration && totalDuration > 0) {
+        console.log("song finished reloading page...");
+        window.location.reload();
+    }
     const progress = document.getElementById("progress");
     const progress_time_element = document.getElementById("time_start");
+    const songDuration = document.getElementById("songDuration");
+
     let currentValue = parseFloat(progress.getAttribute("value")) || 0;
     let newValue = currentValue + 1000;
     progress.setAttribute("value", newValue);

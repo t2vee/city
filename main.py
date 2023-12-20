@@ -39,7 +39,7 @@ results = sp.current_user_playing_track()
 from datetime import datetime, timedelta
 
 cache = {}
-cache_timeout = timedelta(seconds=60)
+cache_timeout = timedelta(minutes=15)
 stats_cache_timeout = timedelta(days=30)
 stats_cache = {}
 
@@ -83,7 +83,6 @@ async def root(request: Request):
 
             cache['spotify_payload'] = spotify_payload
             cache['timestamp'] = now
-    print(spotify_payload)
     return templates.TemplateResponse("index.html", {"request": request, "data": spotify_payload,
                                                      "cached": "Page Being Cached Server Side..." if caching else "Page Cached"}, )
 
@@ -199,6 +198,13 @@ def prepare_static_files(minify=True):
                 new_filename = f"{base_name}.Min{ext}"
                 with open(os.path.join(dist_dir, new_filename), 'w', encoding='utf-8') as f:
                     f.write(minified_content)
+
+
+@app.get("/toolbox")
+@limiter.limit("1/second")
+async def toolbox(request: Request):
+    return templates.TemplateResponse("toolbox.html", {"request": request})
+
 
 
 @app.get("/up")
