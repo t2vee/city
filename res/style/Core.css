@@ -118,7 +118,7 @@
 		width: 95%;
 		height: 95%;
 		display: block;
-		background-image: url('https://cfedge-cdn.vee.city/content/kLhJNvxNYHqnH0J7zHy2/vee.city/Images/Optimised/V2_vinyl_1_optimised-1.webp');
+		background-image: url('https://cdn.vstatic.net/content/kLhJNvxNYHqnH0J7zHy2/vee.city/Images/Optimised/V2_vinyl_1_optimised-1.webp');
 		background-size: 106% 106%;
 		background-position: center;
 		box-shadow: 0 0 20px 4px rgba(0,0,0,0.6);
@@ -132,7 +132,7 @@
 			z-index: 10;
 			width: 95%;
 			height: 95%;
-			background-image: url('https://cfedge-cdn.vee.city/content/kLhJNvxNYHqnH0J7zHy2/vee.city/Images/Optimised/V2_vinyl_0_optimised.webp');
+			background-image: url('https://cdn.vstatic.net/content/kLhJNvxNYHqnH0J7zHy2/vee.city/Images/Optimised/V2_vinyl_0_optimised.webp');
 			background-size: 100% 100%;
 			border-radius: 50%;
 			mix-blend-mode: screen;

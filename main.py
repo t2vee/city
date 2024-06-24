@@ -74,7 +74,7 @@ async def root(request: Request):
                                True, spot_data["item"]["external_urls"]["spotify"],
                                spot_data["item"]["album"]["external_urls"]["spotify"],
                                spot_data["item"]["artists"][0]["external_urls"]["spotify"],
-                               f'{spot_data["item"]["album"]["images"][1]["url"]}'.replace("https://i.scdn.co/image/", ''),
+                               f'{spot_data["item"]["album"]["images"][1]["url"]}',
                                f"{int(spot_data['progress_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['progress_ms'] / 1000 % 60)) if int(spot_data['progress_ms'] / 1000 % 60) < 10 else int(spot_data['progress_ms'] / 1000 % 60)}",
                                f"{int(spot_data['item']['duration_ms'] / (1000 * 60) % 60)}:{'0' + str(int(spot_data['item']['duration_ms'] / 1000 % 60)) if int(spot_data['item']['duration_ms'] / 1000 % 60) < 10 else int(spot_data['item']['duration_ms'] / 1000 % 60)}",
                                spot_data['progress_ms'],
