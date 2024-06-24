@@ -174,17 +174,17 @@ songtab.addEventListener("click", function() {
 });
 setInterval(increaseProgressBar, 1000);
 function increaseProgressBar() {
+    const songDuration = document.getElementById("songDuration");
     let totalDuration = convertTimeToMilliseconds(songDuration.getAttribute("data-duration"));
-    if (newValue >= totalDuration && totalDuration > 0) {
-        console.log("song finished reloading page...");
-        window.location.reload();
-    }
     const progress = document.getElementById("progress");
     const progress_time_element = document.getElementById("time_start");
-    const songDuration = document.getElementById("songDuration");
 
     let currentValue = parseFloat(progress.getAttribute("value")) || 0;
     let newValue = currentValue + 1000;
+        if (newValue >= totalDuration && totalDuration > 0) {
+        console.log("song finished reloading page...");
+        window.location.reload();
+    }
     progress.setAttribute("value", newValue);
     progress.setAttribute("value", newValue);
     let minutes = Math.floor(newValue / 60000);
